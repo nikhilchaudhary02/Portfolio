@@ -595,7 +595,15 @@ function initMoreProjectsToggle() {
       const nextState = !isExpanded;
 
       toggleBtn.setAttribute('aria-expanded', String(nextState));
-      secondaryGrid.hidden = !nextState;
+
+      if (nextState) {
+        secondaryGrid.removeAttribute('hidden');
+        secondaryGrid.hidden = false;
+      } else {
+        secondaryGrid.setAttribute('hidden', '');
+        secondaryGrid.hidden = true;
+        toggleBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
 
       const toggleText = toggleBtn.querySelector('.toggle-text');
       if (toggleText) {

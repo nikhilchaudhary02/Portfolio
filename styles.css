@@ -107,6 +107,10 @@
   padding: 0;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--nav-height) + 24px);
@@ -1796,6 +1800,10 @@ button {
 
 .toggle-more-btn[aria-expanded="true"] .chevron-icon {
   transform: rotate(180deg);
+}
+
+.secondary-projects-grid[hidden] {
+  display: none !important;
 }
 
 .secondary-projects-grid {
