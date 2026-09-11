@@ -280,15 +280,15 @@ button {
 
 /* Section Shared Layout */
 .section {
-  padding-top: 5.5rem;
-  padding-bottom: 5.5rem;
+  padding-top: 3.25rem;
+  padding-bottom: 3.25rem;
   position: relative;
 }
 
 .section-header {
   text-align: center;
   max-width: 720px;
-  margin: 0 auto 3.5rem;
+  margin: 0 auto 2.25rem;
 }
 
 .section-subtitle {
@@ -666,8 +666,8 @@ button {
    5. Hero Section & Typewriter Effect
    -------------------------------------------------------------------------- */
 .hero-section {
-  padding-top: calc(var(--nav-height) + 3rem);
-  padding-bottom: 4rem;
+  padding-top: calc(var(--nav-height) + 1.5rem);
+  padding-bottom: 2.25rem;
   position: relative;
 }
 
@@ -1015,7 +1015,7 @@ button {
    7. Quick Metrics Ribbon
    -------------------------------------------------------------------------- */
 .hero-stats-ribbon {
-  margin-top: 3.5rem;
+  margin-top: 2rem;
 }
 
 .stats-grid {
@@ -1435,7 +1435,7 @@ button {
 .filter-wrapper {
   display: flex;
   justify-content: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1.75rem;
 }
 
 .filter-tabs {
@@ -1787,7 +1787,7 @@ button {
 
 /* Collapsible Secondary Projects */
 .more-deployments-container {
-  margin-top: 3rem;
+  margin-top: 1.75rem;
 }
 
 .more-deployments-toggle-wrap {
@@ -2107,7 +2107,7 @@ button {
 
 .timeline-item {
   position: relative;
-  margin-bottom: 3rem;
+  margin-bottom: 1.75rem;
 }
 
 .timeline-item:last-child { margin-bottom: 0; }
@@ -2400,7 +2400,7 @@ button {
 .site-footer {
   border-top: 1px solid var(--border-subtle);
   background: var(--bg-surface);
-  padding: 3.5rem 0 2rem;
+  padding: 2.25rem 0 1.5rem;
 }
 
 .footer-top {
@@ -2783,6 +2783,9 @@ button {
 }
 
 @media (max-width: 768px) {
+  .section { padding-top: 2.25rem; padding-bottom: 2.25rem; }
+  .section-header { margin-bottom: 1.5rem; }
+  .hero-section { padding-top: calc(var(--nav-height) + 1rem); padding-bottom: 1.5rem; }
   .desktop-nav, .nav-cta, .cmd-shortcut-btn { display: none; }
   .mobile-menu-toggle { display: flex; }
   .skills-categories-grid { grid-template-columns: 1fr; }
