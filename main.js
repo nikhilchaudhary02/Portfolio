@@ -126,7 +126,7 @@ function initTypewriter() {
     'Web Developer',
     'WordPress & WooCommerce Specialist',
     'Shopify Liquid Architect',
-    'ACF Pro & Custom Post Types Engineer',
+    'ACF & Custom Post Types Engineer',
     'Core Web Vitals Speed Optimizer'
   ];
 
@@ -296,11 +296,11 @@ function initDeveloperTerminal() {
 Location    : Meerut, UP, India
 Experience  : 2+ Years of Production Engineering
 Deliveries  : 60+ Live Websites & Stores Delivered
-Focus       : Custom WordPress, Shopify Liquid, ACF Pro, CPT, Core Web Vitals (90+)
+Focus       : Custom WordPress, Shopify Liquid, ACF, CPT, Core Web Vitals (90+)
 Status      : ● Available for Immediate Full-Time & Freelance Roles`,
 
     skills: () => `<table class="term-table">
-  <tr><td class="term-key">CMS & E-Commerce</td><td class="term-val">WordPress, WooCommerce, Shopify (Liquid), ACF Pro, CPT</td></tr>
+  <tr><td class="term-key">CMS & E-Commerce</td><td class="term-val">WordPress, WooCommerce, Shopify (Liquid), ACF, CPT</td></tr>
   <tr><td class="term-key">Languages</td><td class="term-val">HTML5, CSS3, JavaScript (ES6+), Core PHP, SQL (MySQL)</td></tr>
   <tr><td class="term-key">UI & Styling</td><td class="term-val">CSS Grid, Flexbox, Bootstrap, Mobile-First Design</td></tr>
   <tr><td class="term-key">Tools & Ops</td><td class="term-val">Git, GitHub, Chrome DevTools, Core Web Vitals, On-Page SEO</td></tr>
@@ -323,7 +323,7 @@ Type <strong class="term-cmd-highlight">projects --all</strong> or scroll up to 
 
     experience: () => `Professional Trajectory:
 • <strong>Web Developer</strong> @ Smart Digital Wings, Meerut (09/2024 – Present)
-  - Delivered 50+ client web solutions using WordPress, ACF Pro, and CPT.
+  - Delivered 50+ client web solutions using WordPress, ACF, and CPT.
   - Sub-2-second load times & payment gateway integrations.
 • <strong>Java Intern</strong> @ Appsquadz Software Pvt. Ltd., Noida (10/2022 – 04/2023)
   - OOP programming, software defect remediation, and SQL optimization.`,
