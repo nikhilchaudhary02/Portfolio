@@ -313,7 +313,20 @@ Status      : ● Available for Immediate Full-Time & Freelance Roles`,
 4. <strong>Anamta Footwear</strong> (WooCommerce Retail)       -> <a href="https://anamtafootwear.in/" target="_blank" style="color:#38bdf8;text-decoration:underline;">anamtafootwear.in</a>
 5. <strong>BimaCafe</strong> (InsurTech Comparison)          -> <a href="https://bimacafe.com/" target="_blank" style="color:#38bdf8;text-decoration:underline;">bimacafe.com</a>
 6. <strong>Magic Jaggery</strong> (Organic D2C 90+ Vitals)     -> <a href="https://magicjaggery.com/" target="_blank" style="color:#38bdf8;text-decoration:underline;">magicjaggery.com</a>
-Type <strong class="term-cmd-highlight">projects --all</strong> or scroll up to see 6 more client deployments.`,
+Type <strong class="term-cmd-highlight">projects --all</strong> to view all 11 client deployments.`,
+
+    'projects --all': () => `All Production Deployments & Case Studies:
+1.  <strong>Tarun Goyal Classes</strong> (EdTech / WooCommerce) -> <a href="https://tarungoyalclasses.in/" target="_blank" style="color:#38bdf8;text-decoration:underline;">tarungoyalclasses.in</a>
+2.  <strong>Kainchi Dhaaga</strong> (Shopify D2C Fashion)      -> <a href="https://kainchidhaaga.com/" target="_blank" style="color:#38bdf8;text-decoration:underline;">kainchidhaaga.com</a>
+3.  <strong>Eris-Nexa Elevators</strong> (Corporate B2B)         -> <a href="https://erisnexa.com/" target="_blank" style="color:#38bdf8;text-decoration:underline;">erisnexa.com</a>
+4.  <strong>Anamta Footwear</strong> (WooCommerce Retail)       -> <a href="https://anamtafootwear.in/" target="_blank" style="color:#38bdf8;text-decoration:underline;">anamtafootwear.in</a>
+5.  <strong>BimaCafe</strong> (InsurTech Comparison)          -> <a href="https://bimacafe.com/" target="_blank" style="color:#38bdf8;text-decoration:underline;">bimacafe.com</a>
+6.  <strong>Magic Jaggery</strong> (Organic D2C 90+ Vitals)     -> <a href="https://magicjaggery.com/" target="_blank" style="color:#38bdf8;text-decoration:underline;">magicjaggery.com</a>
+7.  <strong>Sumati Renewables</strong> (CleanTech & Solar)     -> <a href="https://sumatirenewables.com/" target="_blank" style="color:#38bdf8;text-decoration:underline;">sumatirenewables.com</a>
+8.  <strong>Perfect Boxwala</strong> (Packaging E-Commerce)   -> <a href="https://perfectboxwala.com/" target="_blank" style="color:#38bdf8;text-decoration:underline;">perfectboxwala.com</a>
+9.  <strong>TutorBoon</strong> (EdTech Marketplace)          -> <a href="https://tutorboon.com/" target="_blank" style="color:#38bdf8;text-decoration:underline;">tutorboon.com</a>
+10. <strong>ATDS Conferences</strong> (Academic Conferences)   -> <a href="https://atdsconferences.com/" target="_blank" style="color:#38bdf8;text-decoration:underline;">atdsconferences.com</a>
+11. <strong>Dilli Vibes</strong> (Hospitality & Dining)       -> <a href="https://dillivibes.com/" target="_blank" style="color:#38bdf8;text-decoration:underline;">dillivibes.com</a>`,
 
     education: () => `Academic Credentials:
 • <strong>Master of Computer Applications (MCA)</strong> | 2021 – 2023
