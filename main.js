@@ -47,23 +47,23 @@ function initTheme() {
   const root = document.documentElement;
 
   const savedTheme = localStorage.getItem('nc_portfolio_theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+  // Default to light mode for visitors
+  const initialTheme = savedTheme || 'light';
 
   setTheme(initialTheme);
 
   if (themeToggleBtn) {
     themeToggleBtn.addEventListener('click', () => {
-      const currentTheme = root.getAttribute('data-theme') || 'dark';
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      const currentTheme = root.getAttribute('data-theme') || 'light';
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
       setTheme(newTheme);
+      localStorage.setItem('nc_portfolio_theme', newTheme);
       showToast('Theme Updated', `Switched to ${newTheme} mode.`);
     });
   }
 
   function setTheme(theme) {
     root.setAttribute('data-theme', theme);
-    localStorage.setItem('nc_portfolio_theme', theme);
   }
 }
 
