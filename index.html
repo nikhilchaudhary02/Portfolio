@@ -293,32 +293,90 @@
         </div>
       </div>
 
-      <!-- Quick Metrics Ribbon -->
-      <div class="container hero-stats-ribbon">
-        <div class="stats-grid">
-          <div class="stat-card glow-card">
-            <div class="stat-icon">🚀</div>
-            <div class="stat-number"><span class="counter" data-target="60">0</span>+</div>
-            <div class="stat-label">Websites & Stores Delivered</div>
-            <span class="stat-sub">Across WordPress & Shopify</span>
+      <!-- Quick Metrics Ribbon: 2x4 Clockwise Grid Showcase -->
+      <div class="container hero-stats-ribbon" id="metricsRibbon">
+        
+
+        <!-- 2x4 Clockwise Grid Stage (Perimeter Slots 0 to 7) -->
+        <div class="metrics-grid-stage" id="statsStage">
+          <!-- Card 1: Slot 0 (Row 1, Col 1) -->
+          <div class="grid-metric-slot" data-slot="0">
+            <div class="stat-card glow-card" data-metric="1">
+              <div class="stat-icon">🚀</div>
+              <div class="stat-number"><span class="counter" data-target="60">0</span>+</div>
+              <div class="stat-label">Websites & Stores Delivered</div>
+              <span class="stat-sub">Across WordPress & Shopify</span>
+            </div>
           </div>
-          <div class="stat-card glow-card">
-            <div class="stat-icon">⚡</div>
-            <div class="stat-number"><span class="counter" data-target="2">0</span>+</div>
-            <div class="stat-label">Years of Production Experience</div>
-            <span class="stat-sub">Full-Stack & CMS Specialist</span>
+
+          <!-- Card 2: Slot 1 (Row 1, Col 2) -->
+          <div class="grid-metric-slot" data-slot="1">
+            <div class="stat-card glow-card" data-metric="2">
+              <div class="stat-icon">⚡</div>
+              <div class="stat-number"><span class="counter" data-target="2">0</span>+</div>
+              <div class="stat-label">Years of Experience</div>
+              <span class="stat-sub">Full-Stack & CMS Specialist</span>
+            </div>
           </div>
-          <div class="stat-card glow-card">
-            <div class="stat-icon">📱</div>
-            <div class="stat-number"><span class="counter" data-target="100">0</span>%</div>
-            <div class="stat-label">Mobile Responsive & SEO Ready</div>
-            <span class="stat-sub">Fluid Grid & Flexbox Precision</span>
+
+          <!-- Card 3: Slot 2 (Row 1, Col 3) -->
+          <div class="grid-metric-slot" data-slot="2">
+            <div class="stat-card glow-card" data-metric="3">
+              <div class="stat-icon">📱</div>
+              <div class="stat-number"><span class="counter" data-target="100">0</span>%</div>
+              <div class="stat-label">Mobile Responsive & SEO Ready</div>
+              <span class="stat-sub">Fluid Grid & Flexbox Precision</span>
+            </div>
           </div>
-          <div class="stat-card glow-card">
-            <div class="stat-icon">🏆</div>
-            <div class="stat-number"><span class="counter" data-target="99">0</span>.8%</div>
-            <div class="stat-label">Client Satisfaction & Uptime</div>
-            <span class="stat-sub">Sub-2-Second Load Times</span>
+
+          <!-- Card 4: Slot 3 (Row 1, Col 4) -->
+          <div class="grid-metric-slot" data-slot="3">
+            <div class="stat-card glow-card" data-metric="4">
+              <div class="stat-icon">🏆</div>
+              <div class="stat-number"><span class="counter" data-target="99">0</span>.8%</div>
+              <div class="stat-label">Client Satisfaction & Uptime</div>
+              <span class="stat-sub">Sub-2-Second Load Times</span>
+            </div>
+          </div>
+
+          <!-- Card 5: Slot 4 (Row 2, Col 4) -->
+          <div class="grid-metric-slot" data-slot="4">
+            <div class="stat-card glow-card" data-metric="5">
+              <div class="stat-icon">🎯</div>
+              <div class="stat-number"><span class="counter" data-target="95">0</span>+</div>
+              <div class="stat-label">Google PageSpeed Score</div>
+              <span class="stat-sub">Core Web Vitals & Green Audits</span>
+            </div>
+          </div>
+
+          <!-- Card 6: Slot 5 (Row 2, Col 3) -->
+          <div class="grid-metric-slot" data-slot="5">
+            <div class="stat-card glow-card" data-metric="6">
+              <div class="stat-icon">🧩</div>
+              <div class="stat-number"><span class="counter" data-target="45">0</span>+</div>
+              <div class="stat-label">Custom Themes & Plugins</div>
+              <span class="stat-sub">Bespoke ACF & Liquid Systems</span>
+            </div>
+          </div>
+
+          <!-- Card 7: Slot 6 (Row 2, Col 2) -->
+          <div class="grid-metric-slot" data-slot="6">
+            <div class="stat-card glow-card" data-metric="7">
+              <div class="stat-icon">💳</div>
+              <div class="stat-number"><span class="counter" data-target="25">0</span>+</div>
+              <div class="stat-label">Payment & API Gateways</div>
+              <span class="stat-sub">Stripe, Razorpay & ERP Sync</span>
+            </div>
+          </div>
+
+          <!-- Card 8: Slot 7 (Row 2, Col 1) -->
+          <div class="grid-metric-slot" data-slot="7">
+            <div class="stat-card glow-card" data-metric="8">
+              <div class="stat-icon">🤝</div>
+              <div class="stat-number"><span class="counter" data-target="85">0</span>%</div>
+              <div class="stat-label">Repeat Client Rate</div>
+              <span class="stat-sub">Long-Term Founder & Agency Trust</span>
+            </div>
           </div>
         </div>
       </div>
@@ -562,19 +620,19 @@
           <div class="filter-tabs" role="tablist" aria-label="Filter Projects">
             <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">
               <span>All Projects</span>
-              <span class="filter-count">6</span>
+              <span class="filter-count">12</span>
             </button>
             <button class="filter-btn" data-filter="ecommerce" role="tab" aria-selected="false">
               <span>E-Commerce</span>
-              <span class="filter-count">4</span>
+              <span class="filter-count">6</span>
             </button>
             <button class="filter-btn" data-filter="corporate" role="tab" aria-selected="false">
               <span>Corporate & B2B</span>
-              <span class="filter-count">2</span>
+              <span class="filter-count">7</span>
             </button>
             <button class="filter-btn" data-filter="edtech" role="tab" aria-selected="false">
               <span>EdTech</span>
-              <span class="filter-count">1</span>
+              <span class="filter-count">2</span>
             </button>
           </div>
         </div>
@@ -600,9 +658,20 @@
               </div>
             </div>
 
-            <div class="project-image-wrap">
+            <div class="project-image-wrap hover-slider-wrap">
               <a href="https://tarungoyalclasses.in/" target="_blank" rel="noopener noreferrer" class="project-image-link" tabindex="-1" aria-label="Visit live website: Tarun Goyal Classes">
-                <img src="assets/images/tarun-goyal.jpg" alt="Tarun Goyal Classes Live Platform Preview" class="project-preview-img" loading="lazy">
+                <div class="slider-track">
+                  <img src="assets/images/tarun-goyal/1.jpg" alt="Tarun Goyal Classes Live Platform - View 1" class="slider-slide active" loading="lazy">
+                  <img src="assets/images/tarun-goyal/2.jpg" alt="Tarun Goyal Classes Live Platform - View 2" class="slider-slide" loading="lazy">
+                  <img src="assets/images/tarun-goyal/3.jpg" alt="Tarun Goyal Classes Live Platform - View 3" class="slider-slide" loading="lazy">
+                  <img src="assets/images/tarun-goyal/4.jpg" alt="Tarun Goyal Classes Live Platform - View 4" class="slider-slide" loading="lazy">
+                </div>
+                <div class="slider-indicators">
+                  <span class="slider-dot active"></span>
+                  <span class="slider-dot"></span>
+                  <span class="slider-dot"></span>
+                  <span class="slider-dot"></span>
+                </div>
                 <div class="project-image-overlay">
                   <span class="brand-badge-pill">📚 EdTech & Catalog</span>
                 </div>
@@ -654,9 +723,20 @@
               </div>
             </div>
 
-            <div class="project-image-wrap">
+            <div class="project-image-wrap hover-slider-wrap">
               <a href="https://kainchidhaaga.com/" target="_blank" rel="noopener noreferrer" class="project-image-link" tabindex="-1" aria-label="Visit live website: Kainchi Dhaaga">
-                <img src="assets/images/kainchi-dhaaga.jpg" alt="Kainchi Dhaaga Live Fashion Storefront Preview" class="project-preview-img" loading="lazy">
+                <div class="slider-track">
+                  <img src="assets/images/kainchi-dhaaga/1.jpg" alt="Kainchi Dhaaga Live Fashion Storefront - View 1" class="slider-slide active" loading="lazy">
+                  <img src="assets/images/kainchi-dhaaga/2.jpg" alt="Kainchi Dhaaga Live Fashion Storefront - View 2" class="slider-slide" loading="lazy">
+                  <img src="assets/images/kainchi-dhaaga/3.jpg" alt="Kainchi Dhaaga Live Fashion Storefront - View 3" class="slider-slide" loading="lazy">
+                  <img src="assets/images/kainchi-dhaaga/4.jpg" alt="Kainchi Dhaaga Live Fashion Storefront - View 4" class="slider-slide" loading="lazy">
+                </div>
+                <div class="slider-indicators">
+                  <span class="slider-dot active"></span>
+                  <span class="slider-dot"></span>
+                  <span class="slider-dot"></span>
+                  <span class="slider-dot"></span>
+                </div>
                 <div class="project-image-overlay">
                   <span class="brand-badge-pill">👗 Shopify D2C Fashion</span>
                 </div>
@@ -708,9 +788,20 @@
               </div>
             </div>
 
-            <div class="project-image-wrap">
+            <div class="project-image-wrap hover-slider-wrap">
               <a href="https://erisnexa.com/" target="_blank" rel="noopener noreferrer" class="project-image-link" tabindex="-1" aria-label="Visit live website: Eris-Nexa Elevators">
-                <img src="assets/images/erisnexa.jpg" alt="Eris-Nexa Elevators Architectural Platform Preview" class="project-preview-img" loading="lazy">
+                <div class="slider-track">
+                  <img src="assets/images/erisnexa/1.jpg" alt="Eris-Nexa Elevators Platform - View 1" class="slider-slide active" loading="lazy">
+                  <img src="assets/images/erisnexa/2.jpg" alt="Eris-Nexa Elevators Platform - View 2" class="slider-slide" loading="lazy">
+                  <img src="assets/images/erisnexa/3.jpg" alt="Eris-Nexa Elevators Platform - View 3" class="slider-slide" loading="lazy">
+                  <img src="assets/images/erisnexa/4.jpg" alt="Eris-Nexa Elevators Platform - View 4" class="slider-slide" loading="lazy">
+                </div>
+                <div class="slider-indicators">
+                  <span class="slider-dot active"></span>
+                  <span class="slider-dot"></span>
+                  <span class="slider-dot"></span>
+                  <span class="slider-dot"></span>
+                </div>
                 <div class="project-image-overlay">
                   <span class="brand-badge-pill">🏗️ Industrial B2B Specs</span>
                 </div>
@@ -762,9 +853,20 @@
               </div>
             </div>
 
-            <div class="project-image-wrap">
+            <div class="project-image-wrap hover-slider-wrap">
               <a href="https://anamtafootwear.in/" target="_blank" rel="noopener noreferrer" class="project-image-link" tabindex="-1" aria-label="Visit live website: Anamta Footwear">
-                <img src="assets/images/anamta-footwear.jpg" alt="Anamta Footwear Live Storefront Preview" class="project-preview-img" loading="lazy">
+                <div class="slider-track">
+                  <img src="assets/images/anamta-footwear/1.jpg" alt="Anamta Footwear Live Storefront - View 1" class="slider-slide active" loading="lazy">
+                  <img src="assets/images/anamta-footwear/2.jpg" alt="Anamta Footwear Live Storefront - View 2" class="slider-slide" loading="lazy">
+                  <img src="assets/images/anamta-footwear/3.jpg" alt="Anamta Footwear Live Storefront - View 3" class="slider-slide" loading="lazy">
+                  <img src="assets/images/anamta-footwear/4.jpg" alt="Anamta Footwear Live Storefront - View 4" class="slider-slide" loading="lazy">
+                </div>
+                <div class="slider-indicators">
+                  <span class="slider-dot active"></span>
+                  <span class="slider-dot"></span>
+                  <span class="slider-dot"></span>
+                  <span class="slider-dot"></span>
+                </div>
                 <div class="project-image-overlay">
                   <span class="brand-badge-pill">👠 Retail Footwear Store</span>
                 </div>
@@ -816,9 +918,20 @@
               </div>
             </div>
 
-            <div class="project-image-wrap">
+            <div class="project-image-wrap hover-slider-wrap">
               <a href="https://bimacafe.com/" target="_blank" rel="noopener noreferrer" class="project-image-link" tabindex="-1" aria-label="Visit live website: BimaCafe">
-                <img src="assets/images/bimacafe.jpg" alt="BimaCafe InsurTech Comparison Platform Preview" class="project-preview-img" loading="lazy">
+                <div class="slider-track">
+                  <img src="assets/images/bimacafe/1.jpg" alt="BimaCafe InsurTech Comparison - View 1" class="slider-slide active" loading="lazy">
+                  <img src="assets/images/bimacafe/2.jpg" alt="BimaCafe InsurTech Comparison - View 2" class="slider-slide" loading="lazy">
+                  <img src="assets/images/bimacafe/3.jpg" alt="BimaCafe InsurTech Comparison - View 3" class="slider-slide" loading="lazy">
+                  <img src="assets/images/bimacafe/4.jpg" alt="BimaCafe InsurTech Comparison - View 4" class="slider-slide" loading="lazy">
+                </div>
+                <div class="slider-indicators">
+                  <span class="slider-dot active"></span>
+                  <span class="slider-dot"></span>
+                  <span class="slider-dot"></span>
+                  <span class="slider-dot"></span>
+                </div>
                 <div class="project-image-overlay">
                   <span class="brand-badge-pill">🛡️ InsurTech Engine</span>
                 </div>
@@ -870,9 +983,20 @@
               </div>
             </div>
 
-            <div class="project-image-wrap">
+            <div class="project-image-wrap hover-slider-wrap">
               <a href="https://magicjaggery.com/" target="_blank" rel="noopener noreferrer" class="project-image-link" tabindex="-1" aria-label="Visit live website: Magic Jaggery">
-                <img src="assets/images/magic-jaggery.jpg" alt="Sneagnic Magic Jaggery Organic Storefront Preview" class="project-preview-img" loading="lazy">
+                <div class="slider-track">
+                  <img src="assets/images/magic-jaggery/1.jpg" alt="Magic Jaggery Organic Storefront - View 1" class="slider-slide active" loading="lazy">
+                  <img src="assets/images/magic-jaggery/2.jpg" alt="Magic Jaggery Organic Storefront - View 2" class="slider-slide" loading="lazy">
+                  <img src="assets/images/magic-jaggery/3.jpg" alt="Magic Jaggery Organic Storefront - View 3" class="slider-slide" loading="lazy">
+                  <img src="assets/images/magic-jaggery/4.jpg" alt="Magic Jaggery Organic Storefront - View 4" class="slider-slide" loading="lazy">
+                </div>
+                <div class="slider-indicators">
+                  <span class="slider-dot active"></span>
+                  <span class="slider-dot"></span>
+                  <span class="slider-dot"></span>
+                  <span class="slider-dot"></span>
+                </div>
                 <div class="project-image-overlay">
                   <span class="brand-badge-pill">🍯 Organic D2C Store</span>
                 </div>
@@ -919,114 +1043,396 @@
           </div>
 
           <div id="moreProjectsGrid" class="secondary-projects-grid" hidden>
-            <!-- Secondary Item 1: Sumati Renewables (CleanTech Emerald & Solar Yellow) -->
-            <div class="secondary-project-card glow-card brand-card-sec" style="--brand-sec:#10b981;">
-              <div class="sec-card-top">
-                <div class="sec-brand-pill" style="color:#10b981; background:rgba(16,185,129,0.12);">
-                  <span class="sec-dot" style="background:#10b981;"></span> CleanTech & Solar
+            
+            <!-- Project 7: Sumati Renewables -->
+            <article class="project-card brand-card glow-card" data-category="corporate" style="--brand-primary:#10b981; --brand-secondary:#059669; --brand-glow:rgba(16,185,129,0.4);">
+              <div class="project-browser-frame">
+                <div class="browser-dots">
+                  <span class="b-dot dot-close"></span><span class="b-dot dot-min"></span><span class="b-dot dot-max"></span>
                 </div>
-                <h4 class="sec-title">Sumati Renewables</h4>
+                <a href="https://sumatirenewables.com/" target="_blank" rel="noopener noreferrer" class="browser-url-bar" title="Open sumatirenewables.com in new tab">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  <span>sumatirenewables.com</span>
+                  <svg class="url-external-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+                <div class="live-status-pill" title="Verified live production deployment">
+                  <span class="pulse-dot"></span>
+                  <span>Live</span>
+                </div>
               </div>
-              <p class="sec-desc">Clean-energy corporate platform featuring solar savings calculator, portfolio galleries, and inquiry capture funnels.</p>
-              <div class="sec-badges">
-                <span class="tech-badge badge-wp">WordPress</span>
-                <span class="tech-badge badge-frontend">Custom UI</span>
-                <span class="tech-badge badge-solar">B2B Solar</span>
-              </div>
-              <div class="sec-footer-link">
-                <a href="https://sumatirenewables.com" target="_blank" rel="noopener noreferrer" class="link-arrow" style="color:#10b981;">
-                  <span>Visit Website</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+
+              <div class="project-image-wrap hover-slider-wrap">
+                <a href="https://sumatirenewables.com/" target="_blank" rel="noopener noreferrer" class="project-image-link" tabindex="-1" aria-label="Visit live website: Sumati Renewables">
+                  <div class="slider-track">
+                    <img src="assets/images/sumati-renewables/1.jpg" alt="Sumati Renewables CleanTech - View 1" class="slider-slide active" loading="lazy">
+                    <img src="assets/images/sumati-renewables/2.jpg" alt="Sumati Renewables CleanTech - View 2" class="slider-slide" loading="lazy">
+                    <img src="assets/images/sumati-renewables/3.jpg" alt="Sumati Renewables CleanTech - View 3" class="slider-slide" loading="lazy">
+                    <img src="assets/images/sumati-renewables/4.jpg" alt="Sumati Renewables CleanTech - View 4" class="slider-slide" loading="lazy">
+                  </div>
+                  <div class="slider-indicators">
+                    <span class="slider-dot active"></span>
+                    <span class="slider-dot"></span>
+                    <span class="slider-dot"></span>
+                    <span class="slider-dot"></span>
+                  </div>
+                  <div class="project-image-overlay">
+                    <span class="brand-badge-pill">☀️ CleanTech & Solar</span>
+                  </div>
+                  <div class="project-image-hover-action">
+                    <span>Visit Live ↗</span>
+                  </div>
                 </a>
               </div>
-            </div>
-
-            <!-- Secondary Item 2: Perfect Boxwala (Kraft Orange & Industrial Copper) -->
-            <div class="secondary-project-card glow-card brand-card-sec" style="--brand-sec:#ea580c;">
-              <div class="sec-card-top">
-                <div class="sec-brand-pill" style="color:#ea580c; background:rgba(234,88,12,0.12);">
-                  <span class="sec-dot" style="background:#ea580c;"></span> Packaging Manufacturing
+              
+              <div class="project-body compact-body">
+                <div class="project-header-row">
+                  <h3 class="project-title">Sumati Renewables</h3>
+                  <div class="brand-color-dna mini-dna">
+                    <span class="color-swatch swatch-sumati-1" title="Emerald Green"></span>
+                    <span class="color-swatch swatch-sumati-2" title="Solar Accent"></span>
+                  </div>
                 </div>
-                <h4 class="sec-title">Perfect Boxwala</h4>
+
+                <p class="project-summary">Clean-energy corporate platform featuring solar savings calculator, portfolio galleries, and inquiry capture funnels.</p>
+
+                <div class="project-meta-row">
+                  <div class="project-tech-stack compact-stack">
+                    <span class="tech-badge badge-wp">WordPress</span>
+                    <span class="tech-badge badge-frontend">Custom UI</span>
+                    <span class="tech-badge badge-solar">B2B Solar</span>
+                  </div>
+                  <a href="https://sumatirenewables.com/" target="_blank" rel="noopener noreferrer" class="btn-live-preview" aria-label="Visit Sumati Renewables live website">
+                    <span>Visit Live</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </a>
+                </div>
               </div>
-              <p class="sec-desc">Packaging manufacturing e-commerce platform with dynamic dimensional calculators and custom bulk order quoting.</p>
-              <div class="sec-footer-link">
-                <a href="https://perfectboxwala.com" target="_blank" rel="noopener noreferrer" class="link-arrow" style="color:#ea580c;">
-                  <span>Visit Website</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </article>
+
+            <!-- Project 8: Perfect Boxwala -->
+            <article class="project-card brand-card glow-card" data-category="ecommerce corporate" style="--brand-primary:#ea580c; --brand-secondary:#c2410c; --brand-glow:rgba(234,88,12,0.4);">
+              <div class="project-browser-frame">
+                <div class="browser-dots">
+                  <span class="b-dot dot-close"></span><span class="b-dot dot-min"></span><span class="b-dot dot-max"></span>
+                </div>
+                <a href="https://perfectboxwala.com/" target="_blank" rel="noopener noreferrer" class="browser-url-bar" title="Open perfectboxwala.com in new tab">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  <span>perfectboxwala.com</span>
+                  <svg class="url-external-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+                <div class="live-status-pill" title="Verified live production deployment">
+                  <span class="pulse-dot"></span>
+                  <span>Live</span>
+                </div>
+              </div>
+
+              <div class="project-image-wrap hover-slider-wrap">
+                <a href="https://perfectboxwala.com/" target="_blank" rel="noopener noreferrer" class="project-image-link" tabindex="-1" aria-label="Visit live website: Perfect Boxwala">
+                  <div class="slider-track">
+                    <img src="assets/images/perfect-boxwala/1.jpg" alt="Perfect Boxwala Packaging - View 1" class="slider-slide active" loading="lazy">
+                    <img src="assets/images/perfect-boxwala/2.jpg" alt="Perfect Boxwala Packaging - View 2" class="slider-slide" loading="lazy">
+                    <img src="assets/images/perfect-boxwala/3.jpg" alt="Perfect Boxwala Packaging - View 3" class="slider-slide" loading="lazy">
+                    <img src="assets/images/perfect-boxwala/4.jpg" alt="Perfect Boxwala Packaging - View 4" class="slider-slide" loading="lazy">
+                  </div>
+                  <div class="slider-indicators">
+                    <span class="slider-dot active"></span>
+                    <span class="slider-dot"></span>
+                    <span class="slider-dot"></span>
+                    <span class="slider-dot"></span>
+                  </div>
+                  <div class="project-image-overlay">
+                    <span class="brand-badge-pill">📦 Packaging Manufacturing</span>
+                  </div>
+                  <div class="project-image-hover-action">
+                    <span>Visit Live ↗</span>
+                  </div>
                 </a>
               </div>
-            </div>
-
-            <!-- Secondary Item 3: TutorBoon (Academic Cyan & Indigo) -->
-            <div class="secondary-project-card glow-card brand-card-sec" style="--brand-sec:#06b6d4;">
-              <div class="sec-card-top">
-                <div class="sec-brand-pill" style="color:#06b6d4; background:rgba(6,182,212,0.12);">
-                  <span class="sec-dot" style="background:#06b6d4;"></span> EdTech Marketplace
+              
+              <div class="project-body compact-body">
+                <div class="project-header-row">
+                  <h3 class="project-title">Perfect Boxwala</h3>
+                  <div class="brand-color-dna mini-dna">
+                    <span class="color-swatch swatch-boxwala-1" title="Kraft Orange"></span>
+                    <span class="color-swatch swatch-boxwala-2" title="Industrial Copper"></span>
+                  </div>
                 </div>
-                <h4 class="sec-title">TutorBoon</h4>
+
+                <p class="project-summary">Packaging manufacturing e-commerce platform with dynamic dimensional calculators and custom bulk order quoting.</p>
+
+                <div class="project-meta-row">
+                  <div class="project-tech-stack compact-stack">
+                    <span class="tech-badge badge-woo">WooCommerce</span>
+                    <span class="tech-badge badge-frontend">Calculator</span>
+                    <span class="tech-badge badge-b2b">Bulk Quoting</span>
+                  </div>
+                  <a href="https://perfectboxwala.com/" target="_blank" rel="noopener noreferrer" class="btn-live-preview" aria-label="Visit Perfect Boxwala live website">
+                    <span>Visit Live</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </a>
+                </div>
               </div>
-              <p class="sec-desc">Online tutoring platform connecting students with subject matter experts, complete with teacher profiles and session booking.</p>
-              <div class="sec-footer-link">
-                <a href="https://tutorboon.com" target="_blank" rel="noopener noreferrer" class="link-arrow" style="color:#06b6d4;">
-                  <span>Visit Website</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </article>
+
+            <!-- Project 9: TutorBoon -->
+            <article class="project-card brand-card glow-card" data-category="edtech" style="--brand-primary:#06b6d4; --brand-secondary:#3b82f6; --brand-glow:rgba(6,182,212,0.4);">
+              <div class="project-browser-frame">
+                <div class="browser-dots">
+                  <span class="b-dot dot-close"></span><span class="b-dot dot-min"></span><span class="b-dot dot-max"></span>
+                </div>
+                <a href="https://tutorboon.com/" target="_blank" rel="noopener noreferrer" class="browser-url-bar" title="Open tutorboon.com in new tab">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  <span>tutorboon.com</span>
+                  <svg class="url-external-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+                <div class="live-status-pill" title="Verified live production deployment">
+                  <span class="pulse-dot"></span>
+                  <span>Live</span>
+                </div>
+              </div>
+
+              <div class="project-image-wrap hover-slider-wrap">
+                <a href="https://tutorboon.com/" target="_blank" rel="noopener noreferrer" class="project-image-link" tabindex="-1" aria-label="Visit live website: TutorBoon">
+                  <div class="slider-track">
+                    <img src="assets/images/tutorboon/1.jpg" alt="TutorBoon EdTech Marketplace - View 1" class="slider-slide active" loading="lazy">
+                    <img src="assets/images/tutorboon/2.jpg" alt="TutorBoon EdTech Marketplace - View 2" class="slider-slide" loading="lazy">
+                    <img src="assets/images/tutorboon/3.jpg" alt="TutorBoon EdTech Marketplace - View 3" class="slider-slide" loading="lazy">
+                    <img src="assets/images/tutorboon/4.jpg" alt="TutorBoon EdTech Marketplace - View 4" class="slider-slide" loading="lazy">
+                  </div>
+                  <div class="slider-indicators">
+                    <span class="slider-dot active"></span>
+                    <span class="slider-dot"></span>
+                    <span class="slider-dot"></span>
+                    <span class="slider-dot"></span>
+                  </div>
+                  <div class="project-image-overlay">
+                    <span class="brand-badge-pill">🎓 EdTech Marketplace</span>
+                  </div>
+                  <div class="project-image-hover-action">
+                    <span>Visit Live ↗</span>
+                  </div>
                 </a>
               </div>
-            </div>
-
-            <!-- Secondary Item 4: Kashi Bikers World (Racing Crimson & Charcoal) -->
-            <div class="secondary-project-card glow-card brand-card-sec" style="--brand-sec:#ef4444;">
-              <div class="sec-card-top">
-                <div class="sec-brand-pill" style="color:#ef4444; background:rgba(239,68,68,0.12);">
-                  <span class="sec-dot" style="background:#ef4444;"></span> Automotive & Adventure
+              
+              <div class="project-body compact-body">
+                <div class="project-header-row">
+                  <h3 class="project-title">TutorBoon</h3>
+                  <div class="brand-color-dna mini-dna">
+                    <span class="color-swatch swatch-tutor-1" title="Academic Cyan"></span>
+                    <span class="color-swatch swatch-tutor-2" title="Indigo Blue"></span>
+                  </div>
                 </div>
-                <h4 class="sec-title">Kashi Bikers World</h4>
-              </div>
-              <p class="sec-desc">Dynamic motorcycling community portal and adventure accessories showcase with interactive tour itinerary schedules.</p>
-              <div class="sec-badges">
-                <span class="tech-badge badge-wp">WordPress</span>
-                <span class="tech-badge badge-cpt">Community Portal</span>
-                <span class="tech-badge badge-lead">Events</span>
-              </div>
-              <div class="sec-footer-link">
-                <span class="sec-case-study-badge">🏍️ Custom Community Platform</span>
-              </div>
-            </div>
 
-            <!-- Secondary Item 5: ATDS Conferences (Oxford Blue & Sapphire) -->
-            <div class="secondary-project-card glow-card brand-card-sec" style="--brand-sec:#3b82f6;">
-              <div class="sec-card-top">
-                <div class="sec-brand-pill" style="color:#3b82f6; background:rgba(59,130,246,0.12);">
-                  <span class="sec-dot" style="background:#3b82f6;"></span> Academic Conferences
+                <p class="project-summary">Online tutoring platform connecting students with subject matter experts, complete with teacher profiles and session booking.</p>
+
+                <div class="project-meta-row">
+                  <div class="project-tech-stack compact-stack">
+                    <span class="tech-badge badge-wp">WordPress</span>
+                    <span class="tech-badge badge-acf">Tutor CPT</span>
+                    <span class="tech-badge badge-lead">Bookings</span>
+                  </div>
+                  <a href="https://tutorboon.com/" target="_blank" rel="noopener noreferrer" class="btn-live-preview" aria-label="Visit TutorBoon live website">
+                    <span>Visit Live</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </a>
                 </div>
-                <h4 class="sec-title">ATDS Conferences</h4>
               </div>
-              <p class="sec-desc">International conference and academic event website featuring paper submissions, speaker lineups, and attendee registrations.</p>
-              <div class="sec-footer-link">
-                <a href="https://atdsconferences.com" target="_blank" rel="noopener noreferrer" class="link-arrow" style="color:#3b82f6;">
-                  <span>Visit Website</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </article>
+
+            <!-- Project 10: Kashi Bikers World -->
+            <article class="project-card brand-card glow-card" data-category="corporate" style="--brand-primary:#ef4444; --brand-secondary:#b91c1c; --brand-glow:rgba(239,68,68,0.4);">
+              <div class="project-browser-frame">
+                <div class="browser-dots">
+                  <span class="b-dot dot-close"></span><span class="b-dot dot-min"></span><span class="b-dot dot-max"></span>
+                </div>
+                <a href="#contact" class="browser-url-bar" title="Custom Community Portal Deployment">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  <span>kashibikersworld.portal</span>
+                  <svg class="url-external-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+                <div class="live-status-pill" title="Verified client deployment">
+                  <span class="pulse-dot"></span>
+                  <span>Case Study</span>
+                </div>
+              </div>
+
+              <div class="project-image-wrap hover-slider-wrap">
+                <a href="#contact" class="project-image-link" tabindex="-1" aria-label="Explore Kashi Bikers World Case Study">
+                  <div class="slider-track">
+                    <img src="assets/images/kashi-bikers/1.jpg" alt="Kashi Bikers World Community - View 1" class="slider-slide active" loading="lazy">
+                    <img src="assets/images/kashi-bikers/2.jpg" alt="Kashi Bikers World Community - View 2" class="slider-slide" loading="lazy">
+                    <img src="assets/images/kashi-bikers/3.jpg" alt="Kashi Bikers World Community - View 3" class="slider-slide" loading="lazy">
+                    <img src="assets/images/kashi-bikers/4.jpg" alt="Kashi Bikers World Community - View 4" class="slider-slide" loading="lazy">
+                  </div>
+                  <div class="slider-indicators">
+                    <span class="slider-dot active"></span>
+                    <span class="slider-dot"></span>
+                    <span class="slider-dot"></span>
+                    <span class="slider-dot"></span>
+                  </div>
+                  <div class="project-image-overlay">
+                    <span class="brand-badge-pill">🏍️ Automotive & Adventure</span>
+                  </div>
+                  <div class="project-image-hover-action">
+                    <span>Inquire / View ↗</span>
+                  </div>
                 </a>
               </div>
-            </div>
-
-            <!-- Secondary Item 6: Dilli Vibes (Spicy Saffron & Royal Curry) -->
-            <div class="secondary-project-card glow-card brand-card-sec" style="--brand-sec:#f97316;">
-              <div class="sec-card-top">
-                <div class="sec-brand-pill" style="color:#f97316; background:rgba(249,115,22,0.12);">
-                  <span class="sec-dot" style="background:#f97316;"></span> Hospitality & Dining
+              
+              <div class="project-body compact-body">
+                <div class="project-header-row">
+                  <h3 class="project-title">Kashi Bikers World</h3>
+                  <div class="brand-color-dna mini-dna">
+                    <span class="color-swatch swatch-kashi-1" title="Racing Crimson"></span>
+                    <span class="color-swatch swatch-kashi-2" title="Charcoal"></span>
+                  </div>
                 </div>
-                <h4 class="sec-title">Dilli Vibes</h4>
+
+                <p class="project-summary">Dynamic motorcycling community portal and adventure accessories showcase with interactive tour itinerary schedules.</p>
+
+                <div class="project-meta-row">
+                  <div class="project-tech-stack compact-stack">
+                    <span class="tech-badge badge-wp">WordPress</span>
+                    <span class="tech-badge badge-cpt">Community CPT</span>
+                    <span class="tech-badge badge-lead">Events</span>
+                  </div>
+                  <a href="#contact" class="btn-live-preview" aria-label="Inquire about Kashi Bikers World">
+                    <span>View Project</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </a>
+                </div>
               </div>
-              <p class="sec-desc">Vibrant culinary website for a premier dining brand with interactive menu filters, photo galleries, and reservation inquiry flows.</p>
-              <div class="sec-footer-link">
-                <a href="https://dillivibes.com" target="_blank" rel="noopener noreferrer" class="link-arrow" style="color:#f97316;">
-                  <span>Visit Website</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </article>
+
+            <!-- Project 11: ATDS Conferences -->
+            <article class="project-card brand-card glow-card" data-category="corporate" style="--brand-primary:#3b82f6; --brand-secondary:#1d4ed8; --brand-glow:rgba(59,130,246,0.4);">
+              <div class="project-browser-frame">
+                <div class="browser-dots">
+                  <span class="b-dot dot-close"></span><span class="b-dot dot-min"></span><span class="b-dot dot-max"></span>
+                </div>
+                <a href="https://atdsconferences.com/" target="_blank" rel="noopener noreferrer" class="browser-url-bar" title="Open atdsconferences.com in new tab">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  <span>atdsconferences.com</span>
+                  <svg class="url-external-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+                <div class="live-status-pill" title="Verified live production deployment">
+                  <span class="pulse-dot"></span>
+                  <span>Live</span>
+                </div>
+              </div>
+
+              <div class="project-image-wrap hover-slider-wrap">
+                <a href="https://atdsconferences.com/" target="_blank" rel="noopener noreferrer" class="project-image-link" tabindex="-1" aria-label="Visit live website: ATDS Conferences">
+                  <div class="slider-track">
+                    <img src="assets/images/atds-conferences/1.jpg" alt="ATDS Conferences - View 1" class="slider-slide active" loading="lazy">
+                    <img src="assets/images/atds-conferences/2.jpg" alt="ATDS Conferences - View 2" class="slider-slide" loading="lazy">
+                    <img src="assets/images/atds-conferences/3.jpg" alt="ATDS Conferences - View 3" class="slider-slide" loading="lazy">
+                    <img src="assets/images/atds-conferences/4.jpg" alt="ATDS Conferences - View 4" class="slider-slide" loading="lazy">
+                  </div>
+                  <div class="slider-indicators">
+                    <span class="slider-dot active"></span>
+                    <span class="slider-dot"></span>
+                    <span class="slider-dot"></span>
+                    <span class="slider-dot"></span>
+                  </div>
+                  <div class="project-image-overlay">
+                    <span class="brand-badge-pill">🏛️ Academic Conferences</span>
+                  </div>
+                  <div class="project-image-hover-action">
+                    <span>Visit Live ↗</span>
+                  </div>
                 </a>
               </div>
-            </div>
+              
+              <div class="project-body compact-body">
+                <div class="project-header-row">
+                  <h3 class="project-title">ATDS Conferences</h3>
+                  <div class="brand-color-dna mini-dna">
+                    <span class="color-swatch swatch-atds-1" title="Oxford Blue"></span>
+                    <span class="color-swatch swatch-atds-2" title="Sapphire"></span>
+                  </div>
+                </div>
+
+                <p class="project-summary">International conference and academic event website featuring paper submissions, speaker lineups, and attendee registrations.</p>
+
+                <div class="project-meta-row">
+                  <div class="project-tech-stack compact-stack">
+                    <span class="tech-badge badge-wp">WordPress</span>
+                    <span class="tech-badge badge-cpt">Speaker CPT</span>
+                    <span class="tech-badge badge-lead">Registrations</span>
+                  </div>
+                  <a href="https://atdsconferences.com/" target="_blank" rel="noopener noreferrer" class="btn-live-preview" aria-label="Visit ATDS Conferences live website">
+                    <span>Visit Live</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 12: Dilli Vibes -->
+            <article class="project-card brand-card glow-card" data-category="ecommerce corporate" style="--brand-primary:#f97316; --brand-secondary:#ea580c; --brand-glow:rgba(249,115,22,0.4);">
+              <div class="project-browser-frame">
+                <div class="browser-dots">
+                  <span class="b-dot dot-close"></span><span class="b-dot dot-min"></span><span class="b-dot dot-max"></span>
+                </div>
+                <a href="https://dillivibes.com/" target="_blank" rel="noopener noreferrer" class="browser-url-bar" title="Open dillivibes.com in new tab">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  <span>dillivibes.com</span>
+                  <svg class="url-external-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+                <div class="live-status-pill" title="Verified live production deployment">
+                  <span class="pulse-dot"></span>
+                  <span>Live</span>
+                </div>
+              </div>
+
+              <div class="project-image-wrap hover-slider-wrap">
+                <a href="https://dillivibes.com/" target="_blank" rel="noopener noreferrer" class="project-image-link" tabindex="-1" aria-label="Visit live website: Dilli Vibes">
+                  <div class="slider-track">
+                    <img src="assets/images/dilli-vibes/1.jpg" alt="Dilli Vibes Hospitality - View 1" class="slider-slide active" loading="lazy">
+                    <img src="assets/images/dilli-vibes/2.jpg" alt="Dilli Vibes Hospitality - View 2" class="slider-slide" loading="lazy">
+                    <img src="assets/images/dilli-vibes/3.jpg" alt="Dilli Vibes Hospitality - View 3" class="slider-slide" loading="lazy">
+                    <img src="assets/images/dilli-vibes/4.jpg" alt="Dilli Vibes Hospitality - View 4" class="slider-slide" loading="lazy">
+                  </div>
+                  <div class="slider-indicators">
+                    <span class="slider-dot active"></span>
+                    <span class="slider-dot"></span>
+                    <span class="slider-dot"></span>
+                    <span class="slider-dot"></span>
+                  </div>
+                  <div class="project-image-overlay">
+                    <span class="brand-badge-pill">🍽️ Hospitality & Dining</span>
+                  </div>
+                  <div class="project-image-hover-action">
+                    <span>Visit Live ↗</span>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="project-body compact-body">
+                <div class="project-header-row">
+                  <h3 class="project-title">Dilli Vibes</h3>
+                  <div class="brand-color-dna mini-dna">
+                    <span class="color-swatch swatch-dilli-1" title="Spicy Saffron"></span>
+                    <span class="color-swatch swatch-dilli-2" title="Royal Curry"></span>
+                  </div>
+                </div>
+
+                <p class="project-summary">Vibrant culinary website for a premier dining brand with interactive menu filters, photo galleries, and reservation inquiry flows.</p>
+
+                <div class="project-meta-row">
+                  <div class="project-tech-stack compact-stack">
+                    <span class="tech-badge badge-wp">WordPress</span>
+                    <span class="tech-badge badge-frontend">Menu Grid</span>
+                    <span class="tech-badge badge-lead">Reservations</span>
+                  </div>
+                  <a href="https://dillivibes.com/" target="_blank" rel="noopener noreferrer" class="btn-live-preview" aria-label="Visit Dilli Vibes live website">
+                    <span>Visit Live</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </a>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
 

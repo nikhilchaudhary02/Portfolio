@@ -29,9 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initCommandPalette();
   initProjectFilters();
   initMoreProjectsToggle();
+  initCardHoverSliders();
   initContactForm();
   initClipboardActions();
   initStatsCounter();
+  initClockwiseGridMetrics();
   initResumeModal();
   initLocalClock();
   initScrollSpy();
@@ -573,6 +575,18 @@ function initProjectFilters() {
 
       const filterValue = btn.getAttribute('data-filter');
 
+      if (filterValue !== 'all') {
+        const toggleBtn = document.getElementById('toggleMoreProjectsBtn');
+        const secondaryGrid = document.getElementById('moreProjectsGrid');
+        if (toggleBtn && secondaryGrid && (secondaryGrid.hasAttribute('hidden') || secondaryGrid.hidden)) {
+          secondaryGrid.removeAttribute('hidden');
+          secondaryGrid.hidden = false;
+          toggleBtn.setAttribute('aria-expanded', 'true');
+          const toggleText = toggleBtn.querySelector('.toggle-text');
+          if (toggleText) toggleText.textContent = 'Collapse Client Deployments';
+        }
+      }
+
       projectCards.forEach(card => {
         const categories = card.getAttribute('data-category') || '';
         const isMatch = filterValue === 'all' || categories.includes(filterValue);
@@ -626,6 +640,70 @@ function initMoreProjectsToggle() {
       }
     });
   }
+}
+
+/* --------------------------------------------------------------------------
+   11. Interactive Card Hover Image Slider
+   -------------------------------------------------------------------------- */
+function initCardHoverSliders() {
+  const cards = document.querySelectorAll('.project-card');
+
+  cards.forEach(card => {
+    const slides = card.querySelectorAll('.slider-slide');
+    const dots = card.querySelectorAll('.slider-dot');
+    if (slides.length <= 1) return;
+
+    let currentIndex = 0;
+    let hoverInterval = null;
+
+    function showSlide(index) {
+      currentIndex = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === currentIndex);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+    }
+
+    function startSlider() {
+      stopSlider();
+      hoverInterval = setInterval(() => {
+        showSlide(currentIndex + 1);
+      }, 1400);
+    }
+
+    function stopSlider() {
+      if (hoverInterval) {
+        clearInterval(hoverInterval);
+        hoverInterval = null;
+      }
+    }
+
+    card.addEventListener('mouseenter', () => {
+      startSlider();
+    });
+
+    card.addEventListener('mouseleave', () => {
+      stopSlider();
+      showSlide(0); // Reset cleanly to hero view
+    });
+
+    // Support interactive dot preview clicks and mouse events
+    dots.forEach((dot, dotIdx) => {
+      dot.style.pointerEvents = 'auto';
+      dot.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        stopSlider();
+        showSlide(dotIdx);
+      });
+      dot.addEventListener('mouseenter', (e) => {
+        e.stopPropagation();
+        showSlide(dotIdx);
+      });
+    });
+  });
 }
 
 /* --------------------------------------------------------------------------
@@ -787,7 +865,7 @@ function initStatsCounter() {
         });
       }
     });
-  }, { threshold: 0.35 });
+  }, { threshold: 0.15 });
 
   const ribbon = document.querySelector('.hero-stats-ribbon');
   if (ribbon) observer.observe(ribbon);
@@ -807,6 +885,128 @@ function initStatsCounter() {
       }
     }, stepTime);
   }
+}
+
+/* --------------------------------------------------------------------------
+   13b. 2x4 Grid Clockwise (+1) Motion Engine
+   -------------------------------------------------------------------------- */
+function initClockwiseGridMetrics() {
+  const stage = document.getElementById('statsStage');
+  const btnStep = document.getElementById('btnGridStep');
+  const btnPlayPause = document.getElementById('btnGridPlayPause');
+  const playPauseIcon = document.getElementById('gridPlayPauseIcon');
+
+  if (!stage) return;
+
+  const slots = Array.from(stage.querySelectorAll('.grid-metric-slot'));
+  if (slots.length === 0) return;
+
+  let isAutoRotating = true;
+  let isHovered = false;
+  let isTransitioning = false;
+  let autoTimer = null;
+  const INTERVAL_MS = 3500;
+
+  function stepClockwise() {
+    if (isTransitioning) return;
+    isTransitioning = true;
+
+    // 1. Snapshot current layout bounding rects (FIRST)
+    const firstRects = new Map();
+    slots.forEach(slot => {
+      firstRects.set(slot, slot.getBoundingClientRect());
+    });
+
+    // 2. Advance every card's slot clockwise: (slot + 1) % 8 (LAST state in DOM)
+    slots.forEach(slot => {
+      const currentSlot = parseInt(slot.getAttribute('data-slot') || '0', 10);
+      const nextSlot = (currentSlot + 1) % slots.length;
+      slot.setAttribute('data-slot', nextSlot);
+    });
+
+    // 3. Invert: calculate delta from old position to new position
+    slots.forEach(slot => {
+      const first = firstRects.get(slot);
+      const last = slot.getBoundingClientRect();
+      const deltaX = first.left - last.left;
+      const deltaY = first.top - last.top;
+
+      slot.style.transition = 'none';
+      slot.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+    });
+
+    // 4. Play: smoothly animate to new grid position
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        slots.forEach(slot => {
+          slot.style.transition = 'transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1)';
+          slot.style.transform = 'translate(0px, 0px)';
+        });
+
+        setTimeout(() => {
+          slots.forEach(slot => {
+            slot.style.transition = '';
+            slot.style.transform = '';
+          });
+          isTransitioning = false;
+        }, 670);
+      });
+    });
+  }
+
+  function startAutoCycle() {
+    stopAutoCycle();
+    autoTimer = setInterval(() => {
+      if (isAutoRotating && !isHovered && !document.hidden) {
+        stepClockwise();
+      }
+    }, INTERVAL_MS);
+  }
+
+  function stopAutoCycle() {
+    if (autoTimer) {
+      clearInterval(autoTimer);
+      autoTimer = null;
+    }
+  }
+
+  // Hover pauses rotation
+  stage.addEventListener('mouseenter', () => {
+    isHovered = true;
+  });
+
+  stage.addEventListener('mouseleave', () => {
+    isHovered = false;
+  });
+
+  // Manual step button (+1)
+  if (btnStep) {
+    btnStep.addEventListener('click', () => {
+      stepClockwise();
+    });
+  }
+
+  // Play / pause toggle
+  if (btnPlayPause) {
+    btnPlayPause.addEventListener('click', () => {
+      isAutoRotating = !isAutoRotating;
+      if (playPauseIcon) {
+        playPauseIcon.textContent = isAutoRotating ? '⏸' : '▶';
+      }
+      btnPlayPause.title = isAutoRotating ? 'Pause Rotation' : 'Resume Rotation';
+      btnPlayPause.setAttribute('aria-label', isAutoRotating ? 'Pause clockwise rotation' : 'Resume clockwise rotation');
+    });
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopAutoCycle();
+    } else if (isAutoRotating) {
+      startAutoCycle();
+    }
+  });
+
+  startAutoCycle();
 }
 
 /* --------------------------------------------------------------------------
