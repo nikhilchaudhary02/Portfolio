@@ -1227,17 +1227,24 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   8. About Section & GitHub Heatmap Widget
+   8. About Section: High-Performance Bento Architecture
    -------------------------------------------------------------------------- */
-.about-grid {
+.about-bento-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 2rem;
+  grid-template-columns: 1.18fr 0.82fr;
+  gap: 1.5rem;
 }
 
 .about-card {
-  padding: 2.25rem;
+  padding: 1.75rem;
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
 }
 
 .about-card::before {
@@ -1248,19 +1255,30 @@ button {
   right: 0;
   height: 3px;
   background: var(--gradient-primary);
-  opacity: 0.8;
+  opacity: 0.9;
+}
+
+.about-card:hover {
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 12px 32px -6px rgba(0, 0, 0, 0.25);
+}
+
+/* Bento Tile 1: Bio Card */
+.bio-bento-card {
+  display: flex;
+  flex-direction: column;
 }
 
 .card-icon-header {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 0.85rem;
+  margin-bottom: 1.15rem;
 }
 
 .icon-bubble {
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   border-radius: var(--radius-md);
   background: rgba(56, 189, 248, 0.12);
   color: var(--accent-cyan);
@@ -1270,202 +1288,365 @@ button {
   flex-shrink: 0;
 }
 
+[data-theme="light"] .icon-bubble {
+  background: rgba(2, 132, 199, 0.1);
+  color: #0284c7;
+}
+
 .card-heading {
-  font-size: 1.35rem;
+  font-size: 1.22rem;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
 .card-tagline {
-  font-size: 0.78rem;
-  font-weight: 600;
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
   text-transform: uppercase;
   color: var(--accent-cyan);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
+  margin-top: 2px;
 }
 
 .bio-text {
-  font-size: 1.02rem;
+  font-size: 0.94rem;
   color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 1.2rem;
-}
-
-.about-highlights-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.85rem;
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.highlight-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.65rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.highlight-check {
-  color: var(--accent-cyan);
-  font-weight: 800;
-}
-
-/* GitHub Contribution Heatmap Widget */
-.dev-activity-block {
-  margin-top: 2rem;
-  padding: 1.25rem;
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-}
-
-.activity-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  line-height: 1.62;
   margin-bottom: 0.85rem;
-  flex-wrap: wrap;
-  gap: 0.5rem;
 }
 
-.activity-title {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-size: 0.88rem;
+.bio-text strong {
+  color: var(--text-primary);
   font-weight: 600;
 }
 
-.activity-metric {
+/* 4 Highlight Pills Grid */
+.bento-highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.bento-highlight-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 0.85rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+[data-theme="light"] .bento-highlight-pill {
+  background: rgba(241, 245, 249, 0.75);
+  border-color: rgba(203, 213, 225, 0.7);
+}
+
+.bento-highlight-pill:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-cyan);
+  background: rgba(56, 189, 248, 0.06);
+}
+
+.pill-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.pill-content {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.pill-content strong {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.pill-content span {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* Bento Right Column */
+.about-bento-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Bento Tile 2: Education */
+.edu-bento-card {
+  padding: 1.5rem 1.75rem;
+}
+
+.bento-edu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bento-edu-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.bento-edu-item:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.bento-edu-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.edu-year-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-full);
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--accent-indigo);
+}
+
+[data-theme="light"] .edu-year-badge {
+  background: rgba(79, 70, 229, 0.1);
+  color: #4f46e5;
+}
+
+.bento-degree-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.bento-institute {
+  font-size: 0.82rem;
+  color: var(--accent-cyan);
+  font-weight: 500;
+}
+
+/* Bento Tile 3: Developer Telemetry */
+.telemetry-bento-card {
+  padding: 1.25rem 1.5rem;
+}
+
+.telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+}
+
+.telemetry-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--border-subtle);
+}
+
+[data-theme="light"] .telemetry-tile {
+  background: rgba(241, 245, 249, 0.7);
+  border-color: rgba(203, 213, 225, 0.7);
+}
+
+.telemetry-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.telemetry-val {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-emerald);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.8);
+  display: inline-block;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+
+/* Bento Tile 4: Full-Width Commit Telemetry */
+.bento-span {
+  grid-column: 1 / -1;
+  padding: 1.5rem 1.75rem;
+}
+
+.bento-activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.activity-branding {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.github-badge-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .github-badge-icon {
+  background: #0f172a;
+  color: #ffffff;
+}
+
+.activity-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.activity-sub {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.activity-metric-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-code);
-  font-size: 0.75rem;
+  font-size: 0.76rem;
+  font-weight: 600;
   color: var(--accent-emerald);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+}
+
+.pulse-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-emerald);
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.8);
 }
 
 .heatmap-container {
   display: grid;
   grid-template-columns: repeat(36, 1fr);
-  gap: 4px;
-  overflow-x: auto;
-  padding-bottom: 0.5rem;
+  gap: 5px;
+  width: 100%;
+  padding-bottom: 0.25rem;
 }
 
 .heatmap-cell {
-  width: 12px;
-  height: 12px;
-  border-radius: 2px;
-  background: rgba(255, 255, 255, 0.05);
-  transition: transform var(--transition-fast);
+  aspect-ratio: 1;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+[data-theme="light"] .heatmap-cell {
+  background: rgba(0, 0, 0, 0.06);
 }
 
 .heatmap-cell:hover {
-  transform: scale(1.3);
+  transform: scale(1.35);
+  z-index: 5;
 }
 
-.heatmap-cell.lvl-0 { background: rgba(255, 255, 255, 0.05); }
-.heatmap-cell.lvl-1 { background: rgba(16, 185, 129, 0.25); }
-.heatmap-cell.lvl-2 { background: rgba(16, 185, 129, 0.5); }
-.heatmap-cell.lvl-3 { background: rgba(16, 185, 129, 0.75); }
-.heatmap-cell.lvl-4 { background: #10b981; box-shadow: 0 0 6px rgba(16, 185, 129, 0.6); }
+.heatmap-cell.lvl-0 { background: rgba(255, 255, 255, 0.06); }
+[data-theme="light"] .heatmap-cell.lvl-0 { background: rgba(0, 0, 0, 0.06); }
+.heatmap-cell.lvl-1 { background: rgba(16, 185, 129, 0.3); }
+.heatmap-cell.lvl-2 { background: rgba(16, 185, 129, 0.55); }
+.heatmap-cell.lvl-3 { background: rgba(16, 185, 129, 0.8); }
+.heatmap-cell.lvl-4 { background: #10b981; box-shadow: 0 0 8px rgba(16, 185, 129, 0.7); }
 
 .heatmap-legend {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 4px;
-  font-size: 0.7rem;
+  gap: 5px;
+  font-size: 0.72rem;
   color: var(--text-muted);
-  margin-top: 0.5rem;
+  margin-top: 0.65rem;
 }
 
 .legend-cell {
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
   border-radius: 2px;
 }
-.legend-cell.lvl-0 { background: rgba(255, 255, 255, 0.05); }
-.legend-cell.lvl-1 { background: rgba(16, 185, 129, 0.25); }
-.legend-cell.lvl-2 { background: rgba(16, 185, 129, 0.5); }
-.legend-cell.lvl-3 { background: rgba(16, 185, 129, 0.75); }
+
+.legend-cell.lvl-0 { background: rgba(255, 255, 255, 0.06); }
+[data-theme="light"] .legend-cell.lvl-0 { background: rgba(0, 0, 0, 0.06); }
+.legend-cell.lvl-1 { background: rgba(16, 185, 129, 0.3); }
+.legend-cell.lvl-2 { background: rgba(16, 185, 129, 0.55); }
+.legend-cell.lvl-3 { background: rgba(16, 185, 129, 0.8); }
 .legend-cell.lvl-4 { background: #10b981; }
 
-.about-sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
+/* Responsive Bento */
+@media (max-width: 991px) {
+  .about-bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .bento-span {
+    grid-column: 1;
+  }
+  .heatmap-container {
+    overflow-x: auto;
+    gap: 4px;
+  }
+  .heatmap-cell {
+    min-width: 12px;
+    min-height: 12px;
+  }
 }
 
-/* Education Timeline in Sidebar */
-.edu-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
+@media (max-width: 600px) {
+  .bento-highlights-grid,
+  .telemetry-grid {
+    grid-template-columns: 1fr;
+  }
 }
-
-.edu-item {
-  position: relative;
-  padding-left: 1.25rem;
-  border-left: 2px solid var(--border-card);
-}
-
-.edu-year-badge {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 0.15rem 0.6rem;
-  border-radius: var(--radius-full);
-  background: rgba(99, 102, 241, 0.15);
-  color: var(--accent-indigo);
-  margin-bottom: 0.35rem;
-}
-
-.edu-degree {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin-bottom: 0.2rem;
-}
-
-.edu-institute {
-  font-size: 0.9rem;
-  color: var(--accent-cyan);
-  font-weight: 600;
-  margin-bottom: 0.35rem;
-}
-
-.edu-sub {
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-/* Profile Meta Card */
-.profile-meta-title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.profile-meta-details {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
-
-.profile-meta-details li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.88rem;
-}
-
-.meta-label { color: var(--text-muted); }
-.meta-value { font-weight: 600; text-align: right; }
 
 /* --------------------------------------------------------------------------
    9. Interactive Skills Section
