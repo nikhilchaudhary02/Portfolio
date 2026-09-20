@@ -5,7 +5,7 @@
  *  - Interactive Code Studio Workstation (JSON, PHP, Liquid, JS)
  *  - Full Interactive Developer CLI Terminal (zsh-style with command history)
  *  - Mouse-tracking Spotlight Glow on cards
- *  - GitHub-style Contribution Heatmap Generator
+ *  - Architectural Craft & Production Standards Matrix
  *  - Command Palette (Ctrl+K / ⌘K) quick navigation & actions
  *  - Theme switcher with localStorage persistence & system sync
  *  - Mobile hamburger navigation drawer with accessible ARIA management
@@ -14,9 +14,9 @@
  *  - Interactive contact form with real-time validation & toast notifications
  *  - Clipboard copy for email, phone, and code snippets
  *  - Animated metric counters (IntersectionObserver)
- *  - Resume preview modal with Print to PDF support
- *  - Live local station clock (Meerut, India / IST)
  */
+
+'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initTypewriter();
   initCodeStudio();
   initMouseSpotlight();
-  initActivityHeatmap();
   initDeveloperTerminal();
   initCommandPalette();
   initProjectFilters();
@@ -227,42 +226,6 @@ function initMouseSpotlight() {
       card.style.setProperty('--mouse-y', `${y}px`);
     });
   });
-}
-
-/* --------------------------------------------------------------------------
-   6. GitHub-Style Contribution Heatmap Generator
-   -------------------------------------------------------------------------- */
-function initActivityHeatmap() {
-  const container = document.getElementById('activityHeatmap');
-  if (!container) return;
-
-  // Generate 36 columns x 7 days = 252 activity cells with realistic distribution
-  const totalCols = 36;
-  const rows = 7;
-  const totalCells = totalCols * rows;
-  const fragment = document.createDocumentFragment();
-
-  for (let i = 0; i < totalCells; i++) {
-    const cell = document.createElement('div');
-    cell.className = 'heatmap-cell';
-
-    // Weighted random intensity
-    const rand = Math.random();
-    let level = 0;
-    if (rand > 0.75) level = 4;
-    else if (rand > 0.55) level = 3;
-    else if (rand > 0.35) level = 2;
-    else if (rand > 0.15) level = 1;
-
-    cell.classList.add(`lvl-${level}`);
-
-    const commits = level === 0 ? 0 : Math.floor(level * 2.5 + Math.random() * 3);
-    cell.title = `${commits} production commits`;
-
-    fragment.appendChild(cell);
-  }
-
-  container.appendChild(fragment);
 }
 
 /* --------------------------------------------------------------------------

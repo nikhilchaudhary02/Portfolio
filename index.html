@@ -500,36 +500,83 @@
             </div>
           </div>
 
-          <!-- Bento Tile 4: Production Activity & Commit Telemetry (Full-Width Span) -->
-          <div class="about-card bento-span activity-bento-card glow-card">
-            <div class="bento-activity-header">
-              <div class="activity-branding">
-                <div class="github-badge-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <!-- Bento Tile 4: Architectural Craft & Production Standards (Full-Width Span) -->
+          <div class="about-card bento-span standards-bento-card glow-card">
+            <div class="bento-standards-header">
+              <div class="standards-branding">
+                <div class="standards-badge-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <path d="m9 12 2 2 4-4"></path>
+                  </svg>
                 </div>
                 <div>
-                  <h4 class="activity-heading">Production Commit Activity</h4>
-                  <span class="activity-sub">Verified Git Commits & Deployment Cadence</span>
+                  <h4 class="standards-heading">Architectural Craft & Production Standards</h4>
+                  <span class="standards-sub">Non-Negotiable Engineering Principles Built Into Every Client Site</span>
                 </div>
               </div>
-              <div class="activity-metric-pill">
+              <div class="standards-metric-pill">
                 <span class="pulse-indicator"></span>
-                <span>1,840+ commits • 60+ releases</span>
+                <span>Verified Engineering Baseline • Zero Bloat</span>
               </div>
             </div>
 
-            <div class="heatmap-container" id="activityHeatmap" aria-label="Commit Activity Heatmap">
-              <!-- Dynamically generated commit heatmap cells -->
-            </div>
+            <div class="standards-grid">
+              <!-- Principle 1: Zero Bloat -->
+              <div class="standard-item glow-card">
+                <div class="standard-top">
+                  <span class="standard-num">01</span>
+                  <div class="standard-icon-wrap icon-clean" title="Clean Code & Native ACF">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                  </div>
+                </div>
+                <h5 class="standard-title">Zero-Bloat Architecture</h5>
+                <span class="standard-tag">Bespoke Themes over Page Builders</span>
+                <p class="standard-desc">Hand-crafted PHP and native ACF schemas instead of heavy page-builders (Elementor/Divi). Eliminates 30+ plugin dependencies and prevents brittle upgrade conflicts.</p>
+                <div class="standard-pill">Clean DOM & Native ACF</div>
+              </div>
 
-            <div class="heatmap-legend">
-              <span>Less</span>
-              <span class="legend-cell lvl-0"></span>
-              <span class="legend-cell lvl-1"></span>
-              <span class="legend-cell lvl-2"></span>
-              <span class="legend-cell lvl-3"></span>
-              <span class="legend-cell lvl-4"></span>
-              <span>More</span>
+              <!-- Principle 2: Speed Budget -->
+              <div class="standard-item glow-card">
+                <div class="standard-top">
+                  <span class="standard-num">02</span>
+                  <div class="standard-icon-wrap icon-speed" title="Performance & Core Web Vitals">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                  </div>
+                </div>
+                <h5 class="standard-title">Performance Budgeting</h5>
+                <span class="standard-tag">Sub-1.8s LCP & Zero Layout Shift</span>
+                <p class="standard-desc">Speed is designed into the codebase from day one: modern WebP assets, native lazy loading, asset tree-shaking, and 0 cumulative layout shifts (CLS) on mobile.</p>
+                <div class="standard-pill">Core Web Vitals Budget</div>
+              </div>
+
+              <!-- Principle 3: Defensive Webhooks -->
+              <div class="standard-item glow-card">
+                <div class="standard-top">
+                  <span class="standard-num">03</span>
+                  <div class="standard-icon-wrap icon-secure" title="Transaction Integrity">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  </div>
+                </div>
+                <h5 class="standard-title">Defensive Transaction Sync</h5>
+                <span class="standard-tag">Fail-Safe Webhooks & API Integrity</span>
+                <p class="standard-desc">Idempotent webhook handlers for Stripe, Razorpay, and ERP integrations. Built-in retry mechanisms and signature verification ensure zero lost orders or double charges.</p>
+                <div class="standard-pill">100% Webhook Reliability</div>
+              </div>
+
+              <!-- Principle 4: Client Empowerment -->
+              <div class="standard-item glow-card">
+                <div class="standard-top">
+                  <span class="standard-num">04</span>
+                  <div class="standard-icon-wrap icon-client" title="Client CMS Dashboards">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                  </div>
+                </div>
+                <h5 class="standard-title">Client Empowerment UI</h5>
+                <span class="standard-tag">Intuitive, Non-Breaking Dashboards</span>
+                <p class="standard-desc">Custom tailored WordPress & Shopify admin screens so marketing and sales teams can easily update banners, products, and landing pages without touching code or breaking layouts.</p>
+                <div class="standard-pill">Zero-Code Admin UI</div>
+              </div>
             </div>
           </div>
         </div>

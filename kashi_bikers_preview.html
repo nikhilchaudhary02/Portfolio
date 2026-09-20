@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1440">
+  <title>Kashi Bikers World | Official Community & Expeditions Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ef4444;
+      --primary-dark: #b91c1c;
+      --bg-dark: #090d16;
+      --surface: #111827;
+      --surface-card: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: rgba(255,255,255,0.08);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      width: 1440px;
+    }
+    /* NAV */
+    .top-nav {
+      height: 80px;
+      padding: 0 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      background: rgba(9, 13, 22, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -0.5px;
+    }
+    .brand-badge {
+      background: var(--primary);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a.active, .nav-links a:hover {
+      color: var(--primary);
+    }
+    .btn-portal {
+      background: var(--primary);
+      color: white;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* SECTION 1: HERO (0 - 900) */
+    .hero-section {
+      height: 820px;
+      padding: 80px 60px 40px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 40px;
+      background: radial-gradient(circle at 80% 30%, rgba(239, 68, 68, 0.15) 0%, transparent 60%);
+    }
+    .hero-content h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 58px;
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+    }
+    .hero-content h1 span {
+      color: var(--primary);
+      background: linear-gradient(90deg, #ef4444, #f87171);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      max-width: 580px;
+    }
+    .hero-cta-group {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: white;
+      padding: 16px 36px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(239, 68, 68, 0.35);
+    }
+    .btn-secondary {
+      background: var(--surface-card);
+      color: white;
+      padding: 16px 32px;
+      border-radius: 10px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      text-decoration: none;
+    }
+    .hero-stats-strip {
+      display: flex;
+      gap: 36px;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+    .stat-val {
+      font-size: 28px;
+      font-weight: 800;
+      color: white;
+      font-family: 'Outfit', sans-serif;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .hero-visual {
+      background: linear-gradient(145deg, #1e293b, #0f172a);
+      border-radius: 20px;
+      border: 1px solid rgba(239,68,68,0.25);
+      padding: 24px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+    .visual-banner {
+      background: url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+      height: 380px;
+      border-radius: 14px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+    }
+    .banner-overlay-tag {
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(8px);
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* SECTION 2: EXPEDITIONS / MIDDLE (900 - 1800) */
+    .section-expeditions {
+      height: 900px;
+      padding: 70px 60px;
+      background: #0d131f;
+      border-top: 1px solid var(--border);
+    }
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 50px;
+    }
+    .tag-badge {
+      color: var(--primary);
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 40px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    .section-sub {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+    .tours-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .tour-card {
+      background: var(--surface-card);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .tour-thumb {
+      height: 220px;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+    }
+    .tour-1 { background-image: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=80'); }
+    .tour-2 { background-image: url('https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=600&q=80'); }
+    .tour-3 { background-image: url('https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=600&q=80'); }
+    .tour-duration {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(0,0,0,0.85);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .tour-body {
+      padding: 24px;
+    }
+    .tour-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .tour-desc {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .tour-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+    .tour-price {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .tour-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: white;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* SECTION 3: SERVICES & FLEET (1800 - 2700) */
+    .section-fleet {
+      height: 900px;
+      padding: 70px 60px;
+      background: #090d16;
+      border-top: 1px solid var(--border);
+    }
+    .fleet-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      margin-top: 40px;
+    }
+    .fleet-card {
+      background: var(--surface-card);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 20px;
+      text-align: center;
+    }
+    .fleet-img {
+      height: 160px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+      margin-bottom: 16px;
+    }
+    .fleet-1 { background-image: url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=500&q=80'); }
+    .fleet-2 { background-image: url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=500&q=80'); }
+    .fleet-3 { background-image: url('https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=500&q=80'); }
+    .fleet-4 { background-image: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=500&q=80'); }
+    .fleet-name { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+    .fleet-specs { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; }
+    .fleet-badge {
+      background: rgba(239,68,68,0.15);
+      color: var(--primary);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      display: inline-block;
+    }
+
+    /* SECTION 4: COMMUNITY PORTAL (2700 - 3600) */
+    .section-portal {
+      height: 900px;
+      padding: 70px 60px;
+      background: #0d131f;
+      border-top: 1px solid var(--border);
+    }
+    .portal-dashboard {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 30px;
+      background: var(--surface-card);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      padding: 30px;
+      margin-top: 30px;
+    }
+    .portal-sidebar {
+      border-right: 1px solid var(--border);
+      padding-right: 25px;
+    }
+    .rider-profile {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+    .rider-avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 20px;
+    }
+    .portal-nav-item {
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .portal-nav-item.active {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--primary);
+    }
+    .portal-main-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .portal-stat-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .portal-stat-num {
+      font-size: 32px;
+      font-weight: 800;
+      color: white;
+      font-family: 'Outfit', sans-serif;
+      margin-top: 6px;
+    }
+    .gps-feed-box {
+      grid-column: span 2;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .gps-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #10b981;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .pulse {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="top-nav">
+    <div class="brand-logo">
+      <span class="brand-badge">KBW</span>
+      <span>Kashi Bikers World</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#hero" class="active">Home</a></li>
+      <li><a href="#expeditions">Expeditions</a></li>
+      <li><a href="#fleet">Our Fleet</a></li>
+      <li><a href="#portal">Rider Portal</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="btn-portal">Rider Login ↗</button>
+  </nav>
+
+  <!-- Slide 1: Hero Banner -->
+  <section class="hero-section" id="hero">
+    <div class="hero-content">
+      <span class="tag-badge">Official Adventure Portal</span>
+      <h1>Conquer The Himalayas With <span>Kashi Bikers</span></h1>
+      <p class="hero-subtitle">Premium high-altitude motorcycle expeditions across Leh-Ladakh, Spiti Valley, and Nepal. Complete with Royal Enfield rental fleet, backup vehicle & oxygen support.</p>
+      <div class="hero-cta-group">
+        <a href="#expeditions" class="btn-primary">Book 2025 Tour</a>
+        <a href="#fleet" class="btn-secondary">Explore Fleet</a>
+      </div>
+      <div class="hero-stats-strip">
+        <div>
+          <div class="stat-val">12,500+</div>
+          <div class="stat-label">Km Covered</div>
+        </div>
+        <div>
+          <div class="stat-val">450+</div>
+          <div class="stat-label">Expeditions Done</div>
+        </div>
+        <div>
+          <div class="stat-val">99.8%</div>
+          <div class="stat-label">Safety Record</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="visual-banner">
+        <div class="banner-overlay-tag">⛰️ Khardung La Pass • 17,982 FT Completed</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 2: Middle Section / Expeditions -->
+  <section class="section-expeditions" id="expeditions">
+    <div class="section-header">
+      <span class="tag-badge">Curated Itineraries</span>
+      <h2 class="section-title">Upcoming Motorcycle Expeditions</h2>
+      <p class="section-sub">All-inclusive guided expeditions featuring mechanics, support backup vehicle, high-altitude medical kits, and luxury camp stays.</p>
+    </div>
+    <div class="tours-grid">
+      <div class="tour-card">
+        <div class="tour-thumb tour-1">
+          <span class="tour-duration">10 Days / 9 Nights</span>
+        </div>
+        <div class="tour-body">
+          <h3 class="tour-title">Leh-Ladakh Grand Circuit</h3>
+          <p class="tour-desc">Manali - Sarchu - Leh - Nubra Valley - Pangong Tso - Khardung La Pass. The ultimate bucket list.</p>
+          <div class="tour-footer">
+            <span class="tour-price">₹38,500</span>
+            <button class="tour-btn">View Route</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tour-card">
+        <div class="tour-thumb tour-2">
+          <span class="tour-duration">8 Days / 7 Nights</span>
+        </div>
+        <div class="tour-body">
+          <h3 class="tour-title">Spiti Valley Extreme</h3>
+          <p class="tour-desc">Shimla - Kaza - Key Monastery - Chandratal Lake - Kunzum Pass. Rugged Himalayan terrains.</p>
+          <div class="tour-footer">
+            <span class="tour-price">₹32,000</span>
+            <button class="tour-btn">View Route</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tour-card">
+        <div class="tour-thumb tour-3">
+          <span class="tour-duration">7 Days / 6 Nights</span>
+        </div>
+        <div class="tour-body">
+          <h3 class="tour-title">Varanasi - Nepal Border Ride</h3>
+          <p class="tour-desc">Ghats of Kashi - Gorakhpur - Lumbini - Pokhara. Heritage trails, lakes, and misty Himalayan foothills.</p>
+          <div class="tour-footer">
+            <span class="tour-price">₹26,500</span>
+            <button class="tour-btn">View Route</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 3: Our Services & Fleet -->
+  <section class="section-fleet" id="fleet">
+    <div class="section-header">
+      <span class="tag-badge">Tour Services & Machinery</span>
+      <h2 class="section-title">Our Adventure Fleet & Services</h2>
+      <p class="section-sub">Company-maintained Royal Enfield Himalayan 450s and Scram 411s, customized for rough terrain touring.</p>
+    </div>
+    <div class="fleet-grid">
+      <div class="fleet-card">
+        <div class="fleet-img fleet-1"></div>
+        <h4 class="fleet-name">Himalayan 450 Sherpa</h4>
+        <div class="fleet-specs">Liquid Cooled • 40 HP • Dual ABS</div>
+        <span class="fleet-badge">Available for Rent</span>
+      </div>
+      <div class="fleet-card">
+        <div class="fleet-img fleet-2"></div>
+        <h4 class="fleet-name">Scram 411 Adventure</h4>
+        <div class="fleet-specs">Long Travel Suspension • Touring Kit</div>
+        <span class="fleet-badge">Available for Rent</span>
+      </div>
+      <div class="fleet-card">
+        <div class="fleet-img fleet-3"></div>
+        <h4 class="fleet-name">4x4 Backup Support</h4>
+        <div class="fleet-specs">Mechanical Spares • Luggage • O2 Kit</div>
+        <span class="fleet-badge">Included on Tours</span>
+      </div>
+      <div class="fleet-card">
+        <div class="fleet-img fleet-4"></div>
+        <h4 class="fleet-name">Pro Riding Gear Kit</h4>
+        <div class="fleet-specs">Level 2 Armor • All-Weather Boots</div>
+        <span class="fleet-badge">Rental Package</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 4: Rider Community Portal (Inner Page/Portal) -->
+  <section class="section-portal" id="portal">
+    <div class="section-header">
+      <span class="tag-badge">Exclusive Member Portal</span>
+      <h2 class="section-title">Rider Community & Trip Dashboard</h2>
+      <p class="section-sub">Live telemetry, telemetry logs, route checkpoints, and verified rider community profiles.</p>
+    </div>
+    <div class="portal-dashboard">
+      <div class="portal-sidebar">
+        <div class="rider-profile">
+          <div class="rider-avatar">NK</div>
+          <div>
+            <div style="font-weight:700; font-size:16px;">Nikhil Chaudhary</div>
+            <div style="font-size:13px; color:var(--text-muted);">Expedition Leader #104</div>
+          </div>
+        </div>
+        <div class="portal-nav-item active">📊 Live Trip Telemetry</div>
+        <div class="portal-nav-item">🗺️ GPS Route Checkpoints</div>
+        <div class="portal-nav-item">🔧 Maintenance & Inspection</div>
+        <div class="portal-nav-item">📸 Community Photo Stream</div>
+        <div class="portal-nav-item">⚙️ Profile Settings</div>
+      </div>
+      <div class="portal-main-grid">
+        <div class="portal-stat-box">
+          <span style="color:var(--text-muted); font-size:13px; font-weight:700;">CURRENT ELEVATION</span>
+          <div class="portal-stat-num">14,270 FT</div>
+        </div>
+        <div class="portal-stat-box">
+          <span style="color:var(--text-muted); font-size:13px; font-weight:700;">CONVOY RIDERS</span>
+          <div class="portal-stat-num">18 Bikes</div>
+        </div>
+        <div class="gps-feed-box">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+            <span style="font-weight:700; font-size:15px;">Live GPS Convoy Feed: Tanglang La Pass</span>
+            <span class="gps-badge"><span class="pulse"></span> LIVE SIGNAL</span>
+          </div>
+          <div style="background:#090d16; border-radius:8px; padding:16px; font-family:monospace; font-size:13px; color:#94a3b8; line-height:1.7;">
+            <div>[GPS-01] Lead Rider (Royal Enfield Himalayan 450) — Speed: 42 km/h | Heading: NNE</div>
+            <div>[GPS-02] Convoy Pack — 16 Riders grouped safely within 200m interval</div>
+            <div>[SUP-01] 4x4 Support Vehicle — Distance: 350m trailing | Oxygen Saturation: 98% OK</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
