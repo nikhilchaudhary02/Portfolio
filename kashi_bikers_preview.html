@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=1440">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kashi Bikers World | Official Community & Expeditions Portal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,16 +17,81 @@
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --border: rgba(255,255,255,0.08);
+      --container-max: 1440px;
     }
     * { margin:0; padding:0; box-sizing:border-box; }
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background: var(--bg-dark);
       color: var(--text-main);
       overflow-x: hidden;
-      width: 1440px;
+      width: 100%;
+      min-height: 100vh;
+      margin: 0 auto;
+      transition: max-width 0.3s ease, box-shadow 0.3s ease;
     }
-    /* NAV */
+
+    /* Simulated Mobile/Desktop Frame Preview Classes */
+    body.sim-mobile {
+      max-width: 390px !important;
+      margin: 20px auto !important;
+      border: 8px solid #1f293d !important;
+      border-radius: 36px !important;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.1) !important;
+      overflow-y: auto !important;
+    }
+    body.sim-desktop {
+      width: 1440px !important;
+      max-width: 1440px !important;
+      margin: 0 auto !important;
+    }
+
+    /* Floating Viewport Mode Switcher */
+    .view-switcher-bar {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      padding: 6px;
+      display: flex;
+      gap: 4px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+    .view-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .view-btn:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.06);
+    }
+    .view-btn.active {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(239, 68, 68, 0.4);
+    }
+
+    /* TOP NAVIGATION */
     .top-nav {
       height: 80px;
       padding: 0 60px;
@@ -35,9 +100,12 @@
       justify-content: space-between;
       border-bottom: 1px solid var(--border);
       background: rgba(9, 13, 22, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
       z-index: 100;
+      width: 100%;
     }
     .brand-logo {
       display: flex;
@@ -47,6 +115,8 @@
       font-weight: 800;
       font-size: 22px;
       letter-spacing: -0.5px;
+      text-decoration: none;
+      color: #fff;
     }
     .brand-badge {
       background: var(--primary);
@@ -73,6 +143,11 @@
     .nav-links a.active, .nav-links a:hover {
       color: var(--primary);
     }
+    .nav-right-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
     .btn-portal {
       background: var(--primary);
       color: white;
@@ -82,17 +157,136 @@
       font-size: 14px;
       border: none;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-portal:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
     }
 
-    /* SECTION 1: HERO (0 - 900) */
+    /* Mobile Hamburger Menu Toggle Button */
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 9px;
+      cursor: pointer;
+      z-index: 110;
+    }
+    .mobile-menu-btn span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.25s ease;
+    }
+    .mobile-menu-btn.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .mobile-menu-btn.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .mobile-menu-btn.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      background: rgba(9, 13, 22, 0.98);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 24px 20px 30px;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 99;
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .mobile-drawer.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .mobile-nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .mobile-nav-links a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+    }
+    .mobile-nav-links a:hover,
+    .mobile-nav-links a.active {
+      color: var(--primary);
+      background: rgba(239, 68, 68, 0.1);
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    /* SECTION SHARED */
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 50px;
+    }
+    .tag-badge {
+      color: var(--primary);
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 40px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    .section-sub {
+      color: var(--text-muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* SECTION 1: HERO */
     .hero-section {
-      height: 820px;
       padding: 80px 60px 40px;
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       align-items: center;
       gap: 40px;
       background: radial-gradient(circle at 80% 30%, rgba(239, 68, 68, 0.15) 0%, transparent 60%);
+      width: 100%;
     }
     .hero-content h1 {
       font-family: 'Outfit', sans-serif;
@@ -120,6 +314,7 @@
       gap: 18px;
       align-items: center;
       margin-bottom: 48px;
+      flex-wrap: wrap;
     }
     .btn-primary {
       background: linear-gradient(135deg, #ef4444, #dc2626);
@@ -130,6 +325,12 @@
       font-size: 16px;
       text-decoration: none;
       box-shadow: 0 10px 25px rgba(239, 68, 68, 0.35);
+      display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(239, 68, 68, 0.45);
     }
     .btn-secondary {
       background: var(--surface-card);
@@ -139,6 +340,12 @@
       font-weight: 600;
       border: 1px solid var(--border);
       text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.2);
     }
     .hero-stats-strip {
       display: flex;
@@ -175,8 +382,9 @@
       padding: 24px;
     }
     .banner-overlay-tag {
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.85);
       backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       padding: 10px 18px;
       border-radius: 8px;
       border: 1px solid rgba(255,255,255,0.15);
@@ -184,36 +392,12 @@
       font-weight: 700;
     }
 
-    /* SECTION 2: EXPEDITIONS / MIDDLE (900 - 1800) */
+    /* SECTION 2: EXPEDITIONS */
     .section-expeditions {
-      height: 900px;
       padding: 70px 60px;
       background: #0d131f;
       border-top: 1px solid var(--border);
-    }
-    .section-header {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 50px;
-    }
-    .tag-badge {
-      color: var(--primary);
-      text-transform: uppercase;
-      font-weight: 800;
-      font-size: 13px;
-      letter-spacing: 2px;
-      margin-bottom: 8px;
-      display: inline-block;
-    }
-    .section-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: 40px;
-      font-weight: 800;
-      margin-bottom: 14px;
-    }
-    .section-sub {
-      color: var(--text-muted);
-      font-size: 16px;
+      width: 100%;
     }
     .tours-grid {
       display: grid;
@@ -225,7 +409,11 @@
       border-radius: 16px;
       border: 1px solid var(--border);
       overflow: hidden;
-      transition: transform 0.3s;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .tour-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(239, 68, 68, 0.4);
     }
     .tour-thumb {
       height: 220px;
@@ -245,6 +433,7 @@
       border-radius: 6px;
       font-size: 12px;
       font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.1);
     }
     .tour-body {
       padding: 24px;
@@ -280,14 +469,20 @@
       border-radius: 8px;
       font-size: 13px;
       font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tour-btn:hover {
+      background: var(--primary);
+      border-color: var(--primary);
     }
 
-    /* SECTION 3: SERVICES & FLEET (1800 - 2700) */
+    /* SECTION 3: FLEET */
     .section-fleet {
-      height: 900px;
       padding: 70px 60px;
       background: #090d16;
       border-top: 1px solid var(--border);
+      width: 100%;
     }
     .fleet-grid {
       display: grid;
@@ -301,6 +496,11 @@
       border: 1px solid var(--border);
       padding: 20px;
       text-align: center;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .fleet-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(239, 68, 68, 0.4);
     }
     .fleet-img {
       height: 160px;
@@ -325,12 +525,12 @@
       display: inline-block;
     }
 
-    /* SECTION 4: COMMUNITY PORTAL (2700 - 3600) */
+    /* SECTION 4: COMMUNITY PORTAL */
     .section-portal {
-      height: 900px;
       padding: 70px 60px;
       background: #0d131f;
       border-top: 1px solid var(--border);
+      width: 100%;
     }
     .portal-dashboard {
       display: grid;
@@ -362,15 +562,26 @@
       justify-content: center;
       font-weight: 800;
       font-size: 20px;
+      color: white;
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+    }
+    .portal-nav-items {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
     .portal-nav-item {
       padding: 12px 16px;
       border-radius: 8px;
-      margin-bottom: 8px;
       font-size: 14px;
       font-weight: 600;
       color: var(--text-muted);
       cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .portal-nav-item:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
     }
     .portal-nav-item.active {
       background: rgba(239, 68, 68, 0.15);
@@ -416,25 +627,391 @@
       border-radius: 50%;
       box-shadow: 0 0 8px #10b981;
     }
+    .gps-terminal-lines {
+      background: #090d16;
+      border-radius: 8px;
+      padding: 16px;
+      font-family: 'JetBrains Mono', monospace, Consolas;
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.7;
+      border: 1px solid rgba(255,255,255,0.05);
+      word-break: break-word;
+    }
+
+    /* FOOTER */
+    .portal-footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 60px;
+      background: #070a12;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer-badges {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .footer-tag {
+      background: rgba(255,255,255,0.06);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    /* ==========================================================================
+       DESKTOP MEDIA QUERY (Screen >= 1025px)
+       Maintains exact 900px screenshot coordinates for automated capture
+       ========================================================================== */
+    @media (min-width: 1025px) {
+      body:not(.sim-mobile) .hero-section {
+        height: 820px;
+      }
+      body:not(.sim-mobile) .section-expeditions {
+        height: 900px;
+      }
+      body:not(.sim-mobile) .section-fleet {
+        height: 900px;
+      }
+      body:not(.sim-mobile) .section-portal {
+        height: 900px;
+      }
+    }
+
+    /* ==========================================================================
+       TABLET RESPONSIVE RULES (max-width: 1024px)
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .top-nav {
+        padding: 0 30px;
+        height: 74px;
+      }
+      .nav-links {
+        gap: 20px;
+        font-size: 14px;
+      }
+      .hero-section {
+        padding: 60px 30px 40px;
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .hero-content h1 {
+        font-size: 46px;
+      }
+      .section-expeditions,
+      .section-fleet,
+      .section-portal {
+        padding: 60px 30px;
+      }
+      .tours-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+      }
+      .fleet-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+      .portal-dashboard {
+        grid-template-columns: 280px 1fr;
+        gap: 20px;
+        padding: 24px;
+      }
+      .portal-footer {
+        padding: 30px;
+      }
+    }
+
+    /* ==========================================================================
+       MOBILE RESPONSIVE RULES (max-width: 768px) and .sim-mobile mode
+       ========================================================================== */
+    @media (max-width: 768px) {
+      .top-nav {
+        padding: 0 18px;
+        height: 68px;
+      }
+      .nav-links {
+        display: none;
+      }
+      .btn-portal {
+        padding: 8px 16px;
+        font-size: 13px;
+      }
+      .mobile-menu-btn {
+        display: flex;
+      }
+      .mobile-drawer {
+        display: flex;
+        top: 68px;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        padding: 40px 18px 40px;
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+      .hero-content h1 {
+        font-size: clamp(30px, 8vw, 42px);
+        letter-spacing: -0.8px;
+        margin-bottom: 16px;
+      }
+      .hero-subtitle {
+        font-size: 15px;
+        margin-bottom: 24px;
+      }
+      .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+        margin-bottom: 32px;
+      }
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        text-align: center;
+        padding: 14px 20px;
+        font-size: 15px;
+      }
+      .hero-stats-strip {
+        gap: 12px;
+        justify-content: space-between;
+        padding-top: 18px;
+      }
+      .stat-val {
+        font-size: 22px;
+      }
+      .stat-label {
+        font-size: 11px;
+      }
+      .hero-visual {
+        padding: 14px;
+        border-radius: 14px;
+      }
+      .visual-banner {
+        height: 250px;
+        padding: 16px;
+        border-radius: 10px;
+      }
+      .banner-overlay-tag {
+        font-size: 12px;
+        padding: 8px 12px;
+      }
+
+      /* Expeditions Section */
+      .section-expeditions {
+        padding: 50px 18px;
+      }
+      .section-header {
+        margin-bottom: 30px;
+      }
+      .section-title {
+        font-size: clamp(26px, 7vw, 34px);
+      }
+      .section-sub {
+        font-size: 14px;
+      }
+      .tours-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .tour-thumb {
+        height: 200px;
+      }
+      .tour-body {
+        padding: 18px;
+      }
+
+      /* Fleet Section */
+      .section-fleet {
+        padding: 50px 18px;
+      }
+      .fleet-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 24px;
+      }
+      .fleet-card {
+        padding: 16px;
+      }
+      .fleet-img {
+        height: 170px;
+      }
+
+      /* Rider Portal Section */
+      .section-portal {
+        padding: 50px 18px 70px;
+      }
+      .portal-dashboard {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+        padding: 16px;
+        border-radius: 14px;
+      }
+      .portal-sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding-right: 0;
+        padding-bottom: 16px;
+        min-width: 0;
+        max-width: 100%;
+      }
+      .rider-profile {
+        margin-bottom: 16px;
+      }
+      .rider-avatar {
+        width: 44px;
+        height: 44px;
+        font-size: 16px;
+      }
+      .portal-nav-items {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 6px;
+        gap: 6px;
+        min-width: 0;
+        max-width: 100%;
+        -webkit-overflow-scrolling: touch;
+      }
+      .portal-nav-item {
+        white-space: nowrap;
+        font-size: 13px;
+        padding: 8px 12px;
+        flex-shrink: 0;
+      }
+      .portal-main-grid {
+        min-width: 0;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+      }
+      .portal-stat-box {
+        min-width: 0;
+        padding: 16px;
+      }
+      .portal-stat-num {
+        font-size: 26px;
+      }
+      .gps-feed-box {
+        grid-column: span 1;
+        min-width: 0;
+        max-width: 100%;
+        padding: 16px;
+      }
+      .gps-terminal-lines {
+        font-size: 12px;
+        padding: 12px;
+        min-width: 0;
+        max-width: 100%;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        white-space: pre-wrap;
+      }
+
+      /* Footer */
+      .portal-footer {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+        padding: 30px 18px;
+      }
+      .footer-badges {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    /* Simulated Mobile Rules (enables mobile styling regardless of window size) */
+    body.sim-mobile .top-nav { padding: 0 18px; height: 68px; }
+    body.sim-mobile .nav-links { display: none; }
+    body.sim-mobile .btn-portal { padding: 8px 16px; font-size: 13px; }
+    body.sim-mobile .mobile-menu-btn { display: flex; }
+    body.sim-mobile .mobile-drawer { display: flex; top: 68px; }
+    body.sim-mobile .hero-section { padding: 40px 18px 40px; grid-template-columns: 1fr; gap: 28px; }
+    body.sim-mobile .hero-content h1 { font-size: 32px; letter-spacing: -0.8px; margin-bottom: 16px; }
+    body.sim-mobile .hero-subtitle { font-size: 14px; margin-bottom: 24px; }
+    body.sim-mobile .hero-cta-group { flex-direction: column; width: 100%; gap: 12px; margin-bottom: 32px; }
+    body.sim-mobile .btn-primary, body.sim-mobile .btn-secondary { width: 100%; text-align: center; padding: 14px 20px; font-size: 15px; }
+    body.sim-mobile .hero-stats-strip { gap: 10px; justify-content: space-between; padding-top: 18px; }
+    body.sim-mobile .stat-val { font-size: 20px; }
+    body.sim-mobile .stat-label { font-size: 10px; }
+    body.sim-mobile .hero-visual { padding: 14px; border-radius: 14px; }
+    body.sim-mobile .visual-banner { height: 230px; padding: 14px; border-radius: 10px; }
+    body.sim-mobile .banner-overlay-tag { font-size: 11px; padding: 7px 10px; }
+    body.sim-mobile .section-expeditions { padding: 50px 18px; }
+    body.sim-mobile .section-header { margin-bottom: 26px; }
+    body.sim-mobile .section-title { font-size: 26px; }
+    body.sim-mobile .section-sub { font-size: 14px; }
+    body.sim-mobile .tours-grid { grid-template-columns: 1fr; gap: 18px; }
+    body.sim-mobile .tour-thumb { height: 190px; }
+    body.sim-mobile .tour-body { padding: 16px; }
+    body.sim-mobile .section-fleet { padding: 50px 18px; }
+    body.sim-mobile .fleet-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 24px; }
+    body.sim-mobile .fleet-card { padding: 16px; }
+    body.sim-mobile .fleet-img { height: 160px; }
+    body.sim-mobile .section-portal { padding: 50px 18px 70px; }
+    body.sim-mobile .portal-dashboard { grid-template-columns: minmax(0, 1fr); gap: 18px; padding: 16px; border-radius: 14px; }
+    body.sim-mobile .portal-sidebar { border-right: none; border-bottom: 1px solid var(--border); padding-right: 0; padding-bottom: 16px; min-width: 0; max-width: 100%; }
+    body.sim-mobile .rider-profile { margin-bottom: 14px; }
+    body.sim-mobile .rider-avatar { width: 42px; height: 42px; font-size: 15px; }
+    body.sim-mobile .portal-nav-items { display: flex; flex-direction: row; overflow-x: auto; padding-bottom: 6px; gap: 6px; min-width: 0; max-width: 100%; }
+    body.sim-mobile .portal-nav-item { white-space: nowrap; font-size: 12px; padding: 8px 10px; flex-shrink: 0; }
+    body.sim-mobile .portal-main-grid { min-width: 0; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    body.sim-mobile .portal-stat-box { min-width: 0; padding: 14px; }
+    body.sim-mobile .portal-stat-num { font-size: 24px; }
+    body.sim-mobile .gps-feed-box { grid-column: span 1; min-width: 0; max-width: 100%; padding: 14px; }
+    body.sim-mobile .gps-terminal-lines { font-size: 11px; padding: 10px; min-width: 0; max-width: 100%; word-break: break-word; overflow-wrap: anywhere; white-space: pre-wrap; }
+    body.sim-mobile .portal-footer { flex-direction: column; gap: 16px; text-align: center; padding: 30px 18px; }
   </style>
 </head>
 <body>
 
+  <!-- Floating Viewport Mode Switcher for Quick Previewing -->
+  <aside class="view-switcher-bar" aria-label="Device View Selector">
+    <button id="viewAutoBtn" class="view-btn active" title="Fluid Responsive Mode">📱 Auto / Responsive</button>
+    <button id="viewMobileBtn" class="view-btn" title="Simulate Mobile Device (390px)">📲 Mobile View</button>
+    <button id="viewDesktopBtn" class="view-btn" title="Simulate Desktop Frame (1440px)">💻 Desktop View</button>
+  </aside>
+
   <!-- Top Navigation -->
   <nav class="top-nav">
-    <div class="brand-logo">
+    <a href="#hero" class="brand-logo" aria-label="Kashi Bikers World Home">
       <span class="brand-badge">KBW</span>
       <span>Kashi Bikers World</span>
-    </div>
+    </a>
     <ul class="nav-links">
       <li><a href="#hero" class="active">Home</a></li>
       <li><a href="#expeditions">Expeditions</a></li>
       <li><a href="#fleet">Our Fleet</a></li>
       <li><a href="#portal">Rider Portal</a></li>
-      <li><a href="#contact">Contact</a></li>
     </ul>
-    <button class="btn-portal">Rider Login ↗</button>
+    <div class="nav-right-actions">
+      <a href="#portal" class="btn-portal">Rider Login ↗</a>
+      <!-- Hamburger Menu Button for Mobile -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open mobile navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </nav>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <ul class="mobile-nav-links">
+      <li><a href="#hero" class="mobile-nav-link active"><span>🏠 Home</span> <span>→</span></a></li>
+      <li><a href="#expeditions" class="mobile-nav-link"><span>🏔️ Expeditions</span> <span>→</span></a></li>
+      <li><a href="#fleet" class="mobile-nav-link"><span>🏍️ Adventure Fleet</span> <span>→</span></a></li>
+      <li><a href="#portal" class="mobile-nav-link"><span>📊 Rider Community Portal</span> <span>→</span></a></li>
+    </ul>
+    <a href="#portal" class="btn-primary" style="text-align: center; width: 100%;">Member Portal Login ↗</a>
+  </div>
 
   <!-- Slide 1: Hero Banner -->
   <section class="hero-section" id="hero">
@@ -571,11 +1148,13 @@
             <div style="font-size:13px; color:var(--text-muted);">Expedition Leader #104</div>
           </div>
         </div>
-        <div class="portal-nav-item active">📊 Live Trip Telemetry</div>
-        <div class="portal-nav-item">🗺️ GPS Route Checkpoints</div>
-        <div class="portal-nav-item">🔧 Maintenance & Inspection</div>
-        <div class="portal-nav-item">📸 Community Photo Stream</div>
-        <div class="portal-nav-item">⚙️ Profile Settings</div>
+        <div class="portal-nav-items">
+          <div class="portal-nav-item active">📊 Live Trip Telemetry</div>
+          <div class="portal-nav-item">🗺️ GPS Route Checkpoints</div>
+          <div class="portal-nav-item">🔧 Maintenance & Inspection</div>
+          <div class="portal-nav-item">📸 Community Photo Stream</div>
+          <div class="portal-nav-item">⚙️ Profile Settings</div>
+        </div>
       </div>
       <div class="portal-main-grid">
         <div class="portal-stat-box">
@@ -587,11 +1166,11 @@
           <div class="portal-stat-num">18 Bikes</div>
         </div>
         <div class="gps-feed-box">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
             <span style="font-weight:700; font-size:15px;">Live GPS Convoy Feed: Tanglang La Pass</span>
             <span class="gps-badge"><span class="pulse"></span> LIVE SIGNAL</span>
           </div>
-          <div style="background:#090d16; border-radius:8px; padding:16px; font-family:monospace; font-size:13px; color:#94a3b8; line-height:1.7;">
+          <div class="gps-terminal-lines">
             <div>[GPS-01] Lead Rider (Royal Enfield Himalayan 450) — Speed: 42 km/h | Heading: NNE</div>
             <div>[GPS-02] Convoy Pack — 16 Riders grouped safely within 200m interval</div>
             <div>[SUP-01] 4x4 Support Vehicle — Distance: 350m trailing | Oxygen Saturation: 98% OK</div>
@@ -601,5 +1180,83 @@
     </div>
   </section>
 
+  <!-- Portal Footer -->
+  <footer class="portal-footer">
+    <div class="footer-brand">
+      <span class="brand-badge">KBW</span>
+      <span>© 2025 Kashi Bikers World Expeditions. All Rights Reserved.</span>
+    </div>
+    <div class="footer-badges">
+      <span class="footer-tag">🛡️ Verified Route Agency</span>
+      <span class="footer-tag">🏍️ Royal Enfield Authorized Partner</span>
+    </div>
+  </footer>
+
+  <!-- Script for Mobile Drawer and Viewport Switcher -->
+  <script>
+    // Mobile Drawer Toggle
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const drawer = document.getElementById('mobileDrawer');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (menuBtn && drawer) {
+      menuBtn.addEventListener('click', () => {
+        const isOpen = drawer.classList.contains('open');
+        drawer.classList.toggle('open');
+        menuBtn.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', !isOpen);
+        drawer.setAttribute('aria-hidden', isOpen);
+      });
+
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          drawer.classList.remove('open');
+          menuBtn.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          drawer.setAttribute('aria-hidden', 'true');
+        });
+      });
+    }
+
+    // Portal Sidebar Tab Highlighting
+    const navItems = document.querySelectorAll('.portal-nav-item');
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        navItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+
+    // Viewport Mode Switcher Buttons
+    const viewAutoBtn = document.getElementById('viewAutoBtn');
+    const viewMobileBtn = document.getElementById('viewMobileBtn');
+    const viewDesktopBtn = document.getElementById('viewDesktopBtn');
+
+    function setActiveViewBtn(btn) {
+      [viewAutoBtn, viewMobileBtn, viewDesktopBtn].forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    if (viewAutoBtn && viewMobileBtn && viewDesktopBtn) {
+      viewAutoBtn.addEventListener('click', () => {
+        document.body.classList.remove('sim-mobile', 'sim-desktop');
+        setActiveViewBtn(viewAutoBtn);
+      });
+
+      viewMobileBtn.addEventListener('click', () => {
+        document.body.classList.remove('sim-desktop');
+        document.body.classList.add('sim-mobile');
+        setActiveViewBtn(viewMobileBtn);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      viewDesktopBtn.addEventListener('click', () => {
+        document.body.classList.remove('sim-mobile');
+        document.body.classList.add('sim-desktop');
+        setActiveViewBtn(viewDesktopBtn);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  </script>
 </body>
 </html>

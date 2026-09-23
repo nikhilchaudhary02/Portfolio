@@ -116,6 +116,8 @@ html {
   scroll-padding-top: calc(var(--nav-height) + 24px);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 body {
@@ -125,6 +127,7 @@ body {
   line-height: 1.6;
   font-size: 1rem;
   overflow-x: hidden;
+  max-width: 100vw;
   position: relative;
   transition: background-color var(--transition-normal), color var(--transition-normal);
 }
@@ -157,6 +160,7 @@ body {
   position: fixed;
   width: 600px;
   height: 600px;
+  max-width: 100vw;
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
@@ -3479,7 +3483,8 @@ button {
     --card-w: 175px;
   }
   .stats-stage.mode-orbit { height: 640px; }
-  .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+  .hero-content { min-width: 0; }
   .about-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: repeat(2, 1fr); }
   .secondary-projects-grid { grid-template-columns: repeat(2, 1fr); }
@@ -3505,6 +3510,10 @@ button {
   .hero-section { padding-top: calc(var(--nav-height) + 1rem); padding-bottom: 1.5rem; }
   .desktop-nav, .nav-cta, .cmd-shortcut-btn { display: none; }
   .mobile-menu-toggle { display: flex; }
+  .hero-grid { grid-template-columns: minmax(0, 1fr); }
+  .hero-content { min-width: 0; }
+  .code-tabs-bar { overflow-x: auto; max-width: 100%; }
+  #toggleMoreProjectsBtn { max-width: 100%; }
   .skills-categories-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
   .secondary-projects-grid { grid-template-columns: 1fr; }
